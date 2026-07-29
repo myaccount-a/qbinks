@@ -1,306 +1,906 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Private Access</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#111111" />
+  <meta
+    name="description"
+    content="A small interactive website made to brighten your day."
+  />
 
-<style>
-:root{
-  --bg:#000;
-  --text:#fff;
-  --accent:#ff9000;
-}
+  <title>A Little Break for You</title>
 
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:Arial, Helvetica, sans-serif;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  position:relative;
-}
+  <style>
+    :root {
+      --background: #101010;
+      --background-soft: #191919;
+      --card: rgba(255, 255, 255, 0.08);
+      --border: rgba(255, 255, 255, 0.13);
+      --text: #f8f5ef;
+      --muted: #bdb7ad;
+      --accent: #e4c585;
+      --accent-dark: #b78d3f;
+      --button-text: #17130b;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
 
-.screen{
-  display:none;
-  text-align:center;
-  animation:fade .6s ease;
-}
-.active{display:block}
+    body.light {
+      --background: #f4efe7;
+      --background-soft: #e9dfd1;
+      --card: rgba(255, 255, 255, 0.7);
+      --border: rgba(42, 34, 24, 0.1);
+      --text: #221d17;
+      --muted: #746a5f;
+      --accent: #b48335;
+      --accent-dark: #865f23;
+      --button-text: #fffaf2;
+      --shadow: 0 20px 50px rgba(70, 50, 30, 0.13);
+    }
 
-h1 span{color:var(--accent)}
+    * {
+      box-sizing: border-box;
+    }
 
-input{
-  width:260px;
-  padding:12px;
-  font-size:16px;
-  text-align:center;
-  border:none;
-  border-radius:6px;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-button{
-  margin-top:15px;
-  padding:12px 32px;
-  font-size:16px;
-  border:none;
-  border-radius:25px;
-  background:var(--accent);
-  color:#000;
-  font-weight:bold;
-  cursor:pointer;
-}
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: var(--text);
+      background:
+        radial-gradient(
+          circle at 12% 8%,
+          rgba(230, 200, 140, 0.12),
+          transparent 34%
+        ),
+        radial-gradient(
+          circle at 88% 38%,
+          rgba(160, 100, 230, 0.1),
+          transparent 30%
+        ),
+        var(--background);
+      font-family: Arial, Helvetica, sans-serif;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
 
-button:hover{transform:scale(1.05)}
+    button {
+      font: inherit;
+    }
 
-.progress{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  margin-bottom:25px;
-}
-.step{
-  width:60px;
-  height:6px;
-  background:#333;
-  border-radius:5px;
-}
-.step.active{background:var(--accent)}
+    .background-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      opacity: 0.25;
+      z-index: 0;
+    }
 
-.shake{animation:shake .4s}
+    .orb-one {
+      width: 240px;
+      height: 240px;
+      top: -100px;
+      right: -70px;
+      background: var(--accent);
+    }
 
-.whatsapp{
-  background:#25D366;
-  color:#fff;
-  animation:pulse 1.5s infinite;
-}
+    .orb-two {
+      width: 220px;
+      height: 220px;
+      left: -120px;
+      bottom: 4%;
+      background: #744f9f;
+    }
 
-.timer{
-  margin-bottom:15px;
-  font-size:14px;
-  color:#aaa;
-}
+    .app {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 760px);
+      margin: 0 auto;
+      padding: 20px 16px 50px;
+    }
 
-/* Circular Timer Center */
-.circular-timer {
-  width: 60px;
-  height: 60px;
-  margin: 0 auto 20px;
-  background: conic-gradient(var(--accent) 0deg, #333 0deg);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text);
-  font-size: 16px;
-  font-weight: bold;
-}
+    .screen {
+      display: none;
+    }
 
-/* Felicitations */
-#congratsMsg {
-  color: var(--accent);
-  font-size: 32px;
-  animation: pulseCongrats 1s infinite alternate;
-}
+    .screen.active {
+      display: block;
+      animation: fade-in 0.45s ease;
+    }
 
-@keyframes fade{from{opacity:0}to{opacity:1}}
-@keyframes shake{
-  0%{transform:translateX(0)}
-  25%{transform:translateX(-6px)}
-  50%{transform:translateX(6px)}
-  75%{transform:translateX(-6px)}
-  100%{transform:translateX(0)}
-}
-@keyframes pulse{
-  0%{box-shadow:0 0 0 0 rgba(37,211,102,.7)}
-  70%{box-shadow:0 0 0 18px rgba(37,211,102,0)}
-  100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}
-}
-@keyframes pulseCongrats {
-  0% { transform: scale(1); text-shadow: 0 0 5px var(--accent);}
-  50% { transform: scale(1.2); text-shadow: 0 0 20px var(--accent);}
-  100% { transform: scale(1); text-shadow: 0 0 5px var(--accent);}
-}
-</style>
+    #welcome-screen {
+      min-height: calc(100vh - 40px);
+      place-items: center;
+    }
+
+    #welcome-screen.active {
+      display: grid;
+    }
+
+    .glass {
+      background: var(--card);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      width: 100%;
+      padding: 44px 25px;
+      border-radius: 30px;
+      text-align: center;
+    }
+
+    .eyebrow,
+    .small-label,
+    .result-label {
+      display: inline-block;
+      color: var(--accent);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+    }
+
+    .hero-card h1 {
+      margin: 16px 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.7rem, 10vw, 4.7rem);
+      line-height: 0.98;
+    }
+
+    .hero-card p {
+      max-width: 520px;
+      margin: 0 auto 27px;
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.7;
+    }
+
+    .hero-card small {
+      display: block;
+      margin-top: 15px;
+      color: var(--muted);
+    }
+
+    .primary-button,
+    .secondary-button,
+    .mood-card,
+    .secret-button,
+    .icon-button,
+    .close-button {
+      border: 0;
+      cursor: pointer;
+      transition:
+        transform 0.18s ease,
+        opacity 0.18s ease,
+        background 0.2s ease;
+    }
+
+    .primary-button {
+      width: 100%;
+      padding: 15px 18px;
+      border-radius: 16px;
+      color: var(--button-text);
+      background: linear-gradient(
+        135deg,
+        var(--accent),
+        var(--accent-dark)
+      );
+      font-weight: 700;
+    }
+
+    .primary-button:hover,
+    .secondary-button:hover,
+    .mood-card:hover,
+    .secret-button:hover {
+      transform: translateY(-2px);
+    }
+
+    .primary-button:active,
+    .secondary-button:active,
+    .mood-card:active,
+    .secret-button:active {
+      transform: scale(0.98);
+    }
+
+    .primary-button:disabled {
+      cursor: not-allowed;
+      opacity: 0.65;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin: 8px 0 20px;
+    }
+
+    .topbar h2 {
+      margin: 5px 0 0;
+      font-size: clamp(1.55rem, 5vw, 2.1rem);
+    }
+
+    .icon-button {
+      width: 46px;
+      height: 46px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      color: var(--text);
+      background: var(--card);
+      border: 1px solid var(--border);
+      font-size: 1.25rem;
+    }
+
+    .mood-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .mood-card {
+      min-height: 145px;
+      padding: 18px;
+      border-radius: 22px;
+      color: var(--text);
+      background: var(--card);
+      border: 1px solid var(--border);
+      text-align: left;
+    }
+
+    .mood-icon {
+      display: block;
+      margin-bottom: 18px;
+      font-size: 1.7rem;
+    }
+
+    .mood-card strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .mood-card small {
+      color: var(--muted);
+    }
+
+    .result-card,
+    .wheel-section {
+      margin-top: 16px;
+      padding: 22px;
+      border-radius: 24px;
+    }
+
+    .result-card p {
+      min-height: 75px;
+      margin: 14px 0 18px;
+      font-size: 1.14rem;
+      line-height: 1.55;
+      transition: opacity 0.15s ease;
+    }
+
+    .secondary-button {
+      width: 100%;
+      padding: 13px 16px;
+      border-radius: 14px;
+      color: var(--text);
+      background: transparent;
+      border: 1px solid var(--border);
+      font-weight: 600;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .section-heading h3 {
+      margin: 5px 0 0;
+      font-size: 1.35rem;
+    }
+
+    .spark {
+      color: var(--accent);
+      font-size: 1.7rem;
+    }
+
+    .wheel-wrapper {
+      position: relative;
+      width: 230px;
+      height: 230px;
+      margin: 28px auto;
+    }
+
+    .wheel {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 8px solid rgba(255, 255, 255, 0.12);
+      background: conic-gradient(
+        #d5ab5d 0deg 60deg,
+        #7d5f91 60deg 120deg,
+        #b77d65 120deg 180deg,
+        #6f8b7b 180deg 240deg,
+        #b59b73 240deg 300deg,
+        #806a5c 300deg 360deg
+      );
+      box-shadow:
+        inset 0 0 0 5px rgba(0, 0, 0, 0.08),
+        0 15px 35px rgba(0, 0, 0, 0.22);
+      transition: transform 4s cubic-bezier(0.15, 0.65, 0.2, 1);
+    }
+
+    .wheel-center {
+      width: 78px;
+      height: 78px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--text);
+      background: var(--background-soft);
+      border: 4px solid var(--border);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .pointer {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--accent);
+      font-size: 2rem;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .wheel-result {
+      min-height: 27px;
+      margin-bottom: 0;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .secret-section {
+      display: flex;
+      justify-content: center;
+      margin: 23px 0 4px;
+    }
+
+    .secret-button {
+      padding: 13px 18px;
+      border-radius: 999px;
+      color: var(--text);
+      background: transparent;
+      border: 1px dashed var(--accent);
+    }
+
+    footer {
+      padding: 25px 10px 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+      text-align: center;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      display: none;
+      place-items: center;
+      padding: 18px;
+      background: rgba(0, 0, 0, 0.67);
+    }
+
+    .modal.open {
+      display: grid;
+      animation: fade-in 0.25s ease;
+    }
+
+    .modal-card {
+      position: relative;
+      width: min(100%, 470px);
+      padding: 31px 22px 25px;
+      border-radius: 26px;
+      text-align: center;
+    }
+
+    .close-button {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      color: var(--text);
+      background: transparent;
+      font-size: 1.7rem;
+    }
+
+    .secret-emoji {
+      font-size: 3rem;
+    }
+
+    .modal-card h3 {
+      margin: 10px 0;
+      font-size: 1.45rem;
+    }
+
+    .modal-card p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .secret-message {
+      min-height: 28px;
+      margin-bottom: 0 !important;
+      color: var(--accent) !important;
+      font-weight: 700;
+    }
+
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (min-width: 650px) {
+      .app {
+        padding: 30px 22px 60px;
+      }
+
+      .hero-card {
+        padding: 58px 46px;
+      }
+
+      .mood-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .mood-card {
+        min-height: 160px;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <div class="background-orb orb-one"></div>
+  <div class="background-orb orb-two"></div>
 
-<!-- WELCOME -->
-<div id="welcome" class="screen active">
-  <h1><span>WELCOME</span></h1>
-</div>
+  <main class="app">
+    <section id="welcome-screen" class="screen active">
+      <div class="hero-card glass">
+        <span class="eyebrow">ANTI-BOREDOM KIT</span>
 
-<!-- NAME -->
-<div id="name" class="screen">
-  <div class="circular-timer" id="circularTimer">120</div>
-  <h2>What is your first name?</h2>
-  <input id="nameInput" placeholder="First name">
-  <br>
-  <button onclick="checkName()">Continue</button>
-</div>
+        <h1>
+          A little break
+          <br />
+          made for you ✨
+        </h1>
 
-<!-- HELLO -->
-<div id="hello" class="screen">
-  <h1>Hello <span>Megan</span></h1>
-</div>
+        <p>
+          Whenever the day feels too long or boredom shows up,
+          press the button and let this page entertain you for a moment.
+        </p>
 
-<!-- MEET -->
-<div id="meet" class="screen">
-  <div class="circular-timer" id="circularTimer">120</div>
-  <h2>Where did we meet?</h2>
-  <input id="meetInput" placeholder="Your answer">
-  <br>
-  <button onclick="checkMeet()">Continue</button>
-</div>
+        <button id="start-button" class="primary-button">
+          Start the distraction
+        </button>
 
-<!-- SMART -->
-<div id="smart" class="screen">
-  <h2>Let’s see if you’re really smart 😌</h2>
-</div>
+        <small>No pressure. Just a little smile.</small>
+      </div>
+    </section>
 
-<!-- QUESTION -->
-<div id="question" class="screen">
-  <div class="circular-timer" id="circularTimer">120</div>
-  <div class="progress" id="progressBar">
-    <div class="step"></div>
-    <div class="step"></div>
-    <div class="step"></div>
-    <div class="step"></div>
-    <div class="step"></div>
+    <section id="main-screen" class="screen">
+      <header class="topbar">
+        <div>
+          <span class="small-label">WELCOME BACK</span>
+          <h2>What do you need right now?</h2>
+        </div>
+
+        <button
+          id="theme-button"
+          class="icon-button"
+          aria-label="Change theme"
+        >
+          ☾
+        </button>
+      </header>
+
+      <section class="mood-grid" aria-label="Activities">
+        <button class="mood-card" data-action="joke">
+          <span class="mood-icon">😂</span>
+          <strong>Make me laugh</strong>
+          <small>A quick little joke</small>
+        </button>
+
+        <button class="mood-card" data-action="question">
+          <span class="mood-icon">💭</span>
+          <strong>Ask me something</strong>
+          <small>A random question</small>
+        </button>
+
+        <button class="mood-card" data-action="challenge">
+          <span class="mood-icon">🎯</span>
+          <strong>Give me a challenge</strong>
+          <small>A small thing to do</small>
+        </button>
+
+        <button class="mood-card" data-action="motivation">
+          <span class="mood-icon">✨</span>
+          <strong>Motivate me</strong>
+          <small>A little positive energy</small>
+        </button>
+      </section>
+
+      <section class="result-card glass" aria-live="polite">
+        <span id="result-label" class="result-label">
+          A MESSAGE FOR YOU
+        </span>
+
+        <p id="result-text">
+          Choose one of the buttons to begin.
+        </p>
+
+        <button id="again-button" class="secondary-button">
+          Give me another one
+        </button>
+      </section>
+
+      <section class="wheel-section glass">
+        <div class="section-heading">
+          <div>
+            <span class="small-label">SURPRISE WHEEL</span>
+            <h3>Let chance decide</h3>
+          </div>
+
+          <span class="spark">✦</span>
+        </div>
+
+        <div class="wheel-wrapper">
+          <div id="wheel" class="wheel">
+            <div class="wheel-center">SPIN</div>
+          </div>
+
+          <div class="pointer">▼</div>
+        </div>
+
+        <button id="spin-button" class="primary-button">
+          Spin the wheel
+        </button>
+
+        <p id="wheel-result" class="wheel-result">
+          Your result will appear here.
+        </p>
+      </section>
+
+      <section class="secret-section">
+        <button id="secret-button" class="secret-button">
+          Do not press this button 👀
+        </button>
+      </section>
+
+      <footer>
+        <p>
+          A simple little space to make the day feel lighter.
+        </p>
+      </footer>
+    </section>
+  </main>
+
+  <div id="secret-modal" class="modal" aria-hidden="true">
+    <div class="modal-card glass">
+      <button
+        id="close-modal-button"
+        class="close-button"
+        aria-label="Close"
+      >
+        ×
+      </button>
+
+      <div class="secret-emoji">😂</div>
+
+      <h3>I knew you would press it!</h3>
+
+      <p>
+        You were way too curious to leave that button alone.
+        At least it made you smile for a second.
+      </p>
+
+      <button id="surprise-button" class="primary-button">
+        Give me the surprise
+      </button>
+
+      <p id="secret-message" class="secret-message"></p>
+    </div>
   </div>
-  <p id="questionText"></p>
-  <input id="answerInput" placeholder="Your answer">
-  <br>
-  <button id="submitBtn" onclick="checkAnswer()">Submit</button>
-</div>
 
-<!-- FELICITATIONS -->
-<div id="congratsScreen" class="screen">
-  <h1 id="congratsMsg">🎉 Congratulations! 🎉</h1>
-  <p>JUST SEND ME A MESSAGE IF YOU DON'T MIND!</p>
-  <a href="https://wa.me/15618086978" target="_blank">
-    <button class="whatsapp">WhatsApp</button>
-  </a>
-</div>
+  <script>
+    const content = {
+      joke: [
+        "Why did the phone wear glasses? Because it lost its contacts. 😂",
 
-<!-- SESSION EXPIRED -->
-<div id="expired" class="screen">
-  <h1><span>Session Expired</span></h1>
-  <p>Time’s up 😎<br>Refresh to try again.</p>
-</div>
+        "I tried to organize a hide-and-seek game at work, but good employees are always hard to find. 😅",
 
-<script>
-/* ---------- SCREEN CONTROL ---------- */
-const show = id => {
-  document.querySelectorAll('.screen')
-    .forEach(s => s.classList.remove('active'));
-  const screen = document.getElementById(id);
-  if(screen) screen.classList.add('active');
-};
+        "Coffee told me, “Without me, you are not yourself.” I had to agree. ☕😂",
 
-/* ---------- TIMER ---------- */
-let timeLeft = 120;
-let timer;
-let finished = false;
-const circular = document.querySelectorAll('.circular-timer');
+        "I am on a seafood diet. I see food, and I eat it.",
 
-function startTimer(){
-  timer = setInterval(()=>{
-    timeLeft--;
-    if(circular){
-      circular.forEach(c=>{
-        let deg = ((120 - timeLeft)/120)*360;
-        c.style.background = `conic-gradient(var(--accent) ${deg}deg, #333 ${deg}deg)`;
-        c.innerText = timeLeft;
+        "Boredom called. I told it you were unavailable today.",
+
+        "Why did the computer go to therapy? It had too many unresolved issues.",
+
+        "My bed and I are perfect for each other, but my alarm clock keeps trying to break us up.",
+
+        "I told myself I would be productive today. We both laughed."
+      ],
+
+      question: [
+        "What small thing can always make you smile, even on a bad day?",
+
+        "If you could spend one day anywhere in the world, where would you go?",
+
+        "What song could you listen to twenty times without getting tired of it?",
+
+        "What is something people often misunderstand about you?",
+
+        "If you could have one superpower for twenty-four hours, what would it be?",
+
+        "What is one of your favorite memories from work or school?",
+
+        "Coffee, tea, or juice—and why?",
+
+        "If your life had a theme song today, what song would it be?",
+
+        "What is one thing you would love to learn just for fun?",
+
+        "Would you rather have unlimited free travel or unlimited free food?"
+      ],
+
+      challenge: [
+        "Find something near you that matches the color of your outfit.",
+
+        "Write down three small things you appreciate about today.",
+
+        "Take thirty seconds to breathe slowly and relax your shoulders.",
+
+        "Send a random emoji to someone and do not explain it for two minutes. 😂",
+
+        "Make a mini playlist with three songs that improve your mood.",
+
+        "Choose one word to describe your day so far.",
+
+        "Drink a little water before you continue.",
+
+        "Take a funny picture of an ordinary object.",
+
+        "Compliment someone sincerely today.",
+
+        "Do a tiny dance for ten seconds, even if nobody is watching."
+      ],
+
+      motivation: [
+        "You do not have to do everything today. One small step still counts.",
+
+        "Even an ordinary day can hold one beautiful little moment.",
+
+        "You are stronger than a difficult moment can make you feel.",
+
+        "Taking a break does not mean giving up. It means giving yourself room to breathe.",
+
+        "Your presence can make a space feel lighter without you even realizing it.",
+
+        "Do not compare your behind-the-scenes life to someone else’s highlight reel.",
+
+        "Today does not have to be perfect to be meaningful.",
+
+        "You are allowed to move at your own pace.",
+
+        "A difficult day does not erase all the progress you have made.",
+
+        "There is nothing wrong with protecting your peace."
+      ]
+    };
+
+    const wheelOptions = [
+      "Listen to a song you love 🎵",
+      "Take a five-minute break 🌿",
+      "Send a meme to a friend 😂",
+      "Drink some water 💧",
+      "Take a funny selfie 🤳",
+      "Choose a snack you enjoy 🍫"
+    ];
+
+    const secretMessages = [
+      "Surprise: you deserve a peaceful little moment today. ✨",
+
+      "Secret mission: smile for five seconds, even for no reason. 😄",
+
+      "Good news: you officially have permission to take a break without feeling guilty.",
+
+      "Secret message: do not let a bad ten minutes take over your whole day.",
+
+      "You found the hidden button. Your reward is a little positive energy. 🌟",
+
+      "Reminder: you are doing better than you think.",
+
+      "Your secret reward is one imaginary day off. Use it wisely. 😂"
+    ];
+
+    const welcomeScreen = document.getElementById("welcome-screen");
+    const mainScreen = document.getElementById("main-screen");
+
+    const startButton = document.getElementById("start-button");
+    const themeButton = document.getElementById("theme-button");
+    const againButton = document.getElementById("again-button");
+
+    const resultLabel = document.getElementById("result-label");
+    const resultText = document.getElementById("result-text");
+
+    const moodButtons = document.querySelectorAll(".mood-card");
+
+    const spinButton = document.getElementById("spin-button");
+    const wheel = document.getElementById("wheel");
+    const wheelResult = document.getElementById("wheel-result");
+
+    const secretButton = document.getElementById("secret-button");
+    const secretModal = document.getElementById("secret-modal");
+    const closeModalButton = document.getElementById(
+      "close-modal-button"
+    );
+
+    const surpriseButton = document.getElementById(
+      "surprise-button"
+    );
+
+    const secretMessage = document.getElementById(
+      "secret-message"
+    );
+
+    let currentAction = "motivation";
+    let currentRotation = 0;
+    let spinning = false;
+
+    const labels = {
+      joke: "A QUICK JOKE",
+      question: "RANDOM QUESTION",
+      challenge: "SMALL CHALLENGE",
+      motivation: "POSITIVE ENERGY"
+    };
+
+    function getRandomItem(items) {
+      const randomIndex = Math.floor(Math.random() * items.length);
+      return items[randomIndex];
+    }
+
+    function showRandomMessage(action) {
+      currentAction = action;
+      resultLabel.textContent = labels[action];
+      resultText.style.opacity = "0";
+
+      setTimeout(() => {
+        resultText.textContent = getRandomItem(content[action]);
+        resultText.style.opacity = "1";
+      }, 140);
+    }
+
+    startButton.addEventListener("click", () => {
+      welcomeScreen.classList.remove("active");
+      mainScreen.classList.add("active");
+
+      showRandomMessage("motivation");
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
       });
+    });
+
+    moodButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const selectedAction = button.dataset.action;
+        showRandomMessage(selectedAction);
+      });
+    });
+
+    againButton.addEventListener("click", () => {
+      showRandomMessage(currentAction);
+    });
+
+    themeButton.addEventListener("click", () => {
+      document.body.classList.toggle("light");
+
+      if (document.body.classList.contains("light")) {
+        themeButton.textContent = "☀";
+      } else {
+        themeButton.textContent = "☾";
+      }
+    });
+
+    spinButton.addEventListener("click", () => {
+      if (spinning) {
+        return;
+      }
+
+      spinning = true;
+      spinButton.disabled = true;
+      spinButton.textContent = "The wheel is spinning...";
+      wheelResult.textContent =
+        "Let us see what chance chooses...";
+
+      const extraTurns = 5 + Math.floor(Math.random() * 4);
+      const randomDegrees = Math.floor(Math.random() * 360);
+
+      currentRotation += extraTurns * 360 + randomDegrees;
+
+      wheel.style.transform =
+        "rotate(" + currentRotation + "deg)";
+
+      setTimeout(() => {
+        const normalizedRotation =
+          (360 - (currentRotation % 360)) % 360;
+
+        const selectedIndex =
+          Math.floor(normalizedRotation / 60) %
+          wheelOptions.length;
+
+        wheelResult.textContent =
+          wheelOptions[selectedIndex];
+
+        spinButton.disabled = false;
+        spinButton.textContent = "Spin again";
+        spinning = false;
+      }, 4100);
+    });
+
+    function openSecretModal() {
+      secretModal.classList.add("open");
+      secretModal.setAttribute("aria-hidden", "false");
     }
-    if(timeLeft <= 0 && !finished){
-      clearInterval(timer);
-      show('expired');
+
+    function closeSecretModal() {
+      secretModal.classList.remove("open");
+      secretModal.setAttribute("aria-hidden", "true");
+      secretMessage.textContent = "";
     }
-  },1000);
-}
 
-/* ---------- SOUND ---------- */
-function playSound(){
-  const ctx = new AudioContext();
-  const osc = ctx.createOscillator();
-  osc.frequency.value = 600;
-  osc.connect(ctx.destination);
-  osc.start();
-  setTimeout(()=>osc.stop(),120);
-}
+    secretButton.addEventListener("click", openSecretModal);
 
-/* ---------- FLOW ---------- */
-setTimeout(()=>{
-  show('name');
-  startTimer();
-},2000);
+    closeModalButton.addEventListener(
+      "click",
+      closeSecretModal
+    );
 
-function deny(msg){ alert(msg); }
+    secretModal.addEventListener("click", (event) => {
+      if (event.target === secretModal) {
+        closeSecretModal();
+      }
+    });
 
-/* ---------- NAME ---------- */
-function checkName(){
-  if(nameInput.value.trim().toLowerCase()==="megan"){
-    show('hello');
-    setTimeout(()=>show('meet'),3000);
-  } else deny("nice try 😏 I don’t know you 😑");
-}
+    surpriseButton.addEventListener("click", () => {
+      secretMessage.textContent =
+        getRandomItem(secretMessages);
+    });
 
-/* ---------- MEET ---------- */
-function checkMeet(){
-  if(meetInput.value.trim().toLowerCase()==="publix"){
-    show('smart');
-    setTimeout(()=>show('question'),2000);
-  } else deny("wait, who are you for real? 😎");
-}
-
-/* ---------- QUESTIONS ---------- */
-const questions = [
-  {q:"I can be kept, but never seen. If I’m shared, I disappear.", a:"secret"},
-  {q:"I have keys, but no locks. I have space, but no room.", a:"keyboard"},
-  {q:"I’m tall when I’m young, and short when I’m old.", a:"candle"},
-  {q:"I’m not alive, but I grow. I don’t have lungs, but I need air.", a:"fire"},
-  {q:"I go up and down, but never move.", a:"stairs"}
-];
-
-let index = 0;
-const steps = document.querySelectorAll('.step');
-
-function loadQuestion(){
-  const q = document.getElementById('questionText');
-  if(q) q.innerHTML = `<strong>${questions[index].q}</strong>`;
-  answerInput.value = "";
-}
-
-/* ---------- ANSWER ---------- */
-function checkAnswer(){
-  const val = answerInput.value.trim().toLowerCase();
-  if(val === questions[index].a){
-    if(steps[index]) steps[index].classList.add('active');
-    playSound();
-    index++;
-    if(index === questions.length){
-      finished = true;
-      clearInterval(timer);
-      show('congratsScreen'); // Felisitasyon screen
-    } else {
-      loadQuestion();
-    }
-  } else {
-    submitBtn.classList.add('shake');
-    answerInput.value="";
-    setTimeout(()=>submitBtn.classList.remove('shake'),400);
-  }
-}
-
-/* ---------- INIT ---------- */
-loadQuestion();
-</script>
-
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeSecretModal();
+      }
+    });
+  </script>
 </body>
 </html>

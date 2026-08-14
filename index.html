@@ -1,906 +1,837 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ht">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#111111" />
-  <meta
-    name="description"
-    content="A small interactive website made to brighten your day."
-  />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#64153e">
+  <title>Nanie × Binks — Ou Ta Renmen Vin Zanmi M?</title>
 
-  <title>A Little Break for You</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --background: #101010;
-      --background-soft: #191919;
-      --card: rgba(255, 255, 255, 0.08);
-      --border: rgba(255, 255, 255, 0.13);
-      --text: #f8f5ef;
-      --muted: #bdb7ad;
-      --accent: #e4c585;
-      --accent-dark: #b78d3f;
-      --button-text: #17130b;
-      --shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    }
-
-    body.light {
-      --background: #f4efe7;
-      --background-soft: #e9dfd1;
-      --card: rgba(255, 255, 255, 0.7);
-      --border: rgba(42, 34, 24, 0.1);
-      --text: #221d17;
-      --muted: #746a5f;
-      --accent: #b48335;
-      --accent-dark: #865f23;
-      --button-text: #fffaf2;
-      --shadow: 0 20px 50px rgba(70, 50, 30, 0.13);
+      --dark-pink: #280a1c;
+      --rose: #ff6eaa;
+      --blush: #ffd8e8;
+      --cream: #fff8fc;
+      --light-pink: #ffb6d4;
     }
 
     * {
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
+    [hidden] {
+      display: none !important;
+    }
+
+    html,
+    body {
+      min-height: 100%;
+      margin: 0;
     }
 
     body {
-      margin: 0;
-      min-height: 100vh;
-      overflow-x: hidden;
-      color: var(--text);
-      background:
-        radial-gradient(
-          circle at 12% 8%,
-          rgba(230, 200, 140, 0.12),
-          transparent 34%
-        ),
-        radial-gradient(
-          circle at 88% 38%,
-          rgba(160, 100, 230, 0.1),
-          transparent 30%
-        ),
-        var(--background);
-      font-family: Arial, Helvetica, sans-serif;
-      transition: background 0.3s ease, color 0.3s ease;
+      overflow: hidden;
+      background: var(--dark-pink);
+      color: var(--cream);
+      font-family: "Manrope", Arial, sans-serif;
     }
 
     button {
       font: inherit;
     }
 
-    .background-orb {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(80px);
+    .experience {
+      position: relative;
+      min-height: 100svh;
+      isolation: isolate;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 18% 16%, rgba(255, 111, 171, .27), transparent 27rem),
+        radial-gradient(circle at 86% 84%, rgba(255, 190, 216, .2), transparent 25rem),
+        linear-gradient(145deg, #250719 0%, #64153e 52%, #330a22 100%);
+    }
+
+    .experience::before {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      z-index: 4;
+      border: 1px solid rgba(255, 182, 212, .36);
+      border-radius: 28px;
       pointer-events: none;
-      opacity: 0.25;
-      z-index: 0;
     }
 
-    .orb-one {
-      width: 240px;
-      height: 240px;
-      top: -100px;
-      right: -70px;
-      background: var(--accent);
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(10px);
+      opacity: .48;
+      animation: drift 9s ease-in-out infinite alternate;
     }
 
-    .orb-two {
+    .orb.one {
+      width: 260px;
+      height: 260px;
+      top: -130px;
+      right: -80px;
+      background: rgba(255, 110, 170, .28);
+    }
+
+    .orb.two {
       width: 220px;
       height: 220px;
-      left: -120px;
-      bottom: 4%;
-      background: #744f9f;
+      bottom: -120px;
+      left: -70px;
+      background: rgba(255, 182, 212, .22);
+      animation-delay: -3s;
     }
 
-    .app {
-      position: relative;
-      z-index: 1;
-      width: min(100%, 760px);
-      margin: 0 auto;
-      padding: 20px 16px 50px;
+    .sparkles span {
+      position: absolute;
+      z-index: -1;
+      color: rgba(255, 223, 227, .28);
+      font-size: clamp(15px, 3vw, 24px);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .sparkles span:nth-child(1) {
+      left: 10%;
+      top: 17%;
+    }
+
+    .sparkles span:nth-child(2) {
+      right: 12%;
+      top: 28%;
+      animation-delay: -1s;
+    }
+
+    .sparkles span:nth-child(3) {
+      left: 16%;
+      bottom: 20%;
+      animation-delay: -2s;
+    }
+
+    .sparkles span:nth-child(4) {
+      right: 9%;
+      bottom: 14%;
+      animation-delay: -3.2s;
+    }
+
+    .sparkles span:nth-child(5) {
+      right: 28%;
+      top: 10%;
+      animation-delay: -4s;
     }
 
     .screen {
-      display: none;
-    }
-
-    .screen.active {
-      display: block;
-      animation: fade-in 0.45s ease;
-    }
-
-    #welcome-screen {
-      min-height: calc(100vh - 40px);
-      place-items: center;
-    }
-
-    #welcome-screen.active {
+      min-height: 100svh;
+      width: 100%;
       display: grid;
-    }
-
-    .glass {
-      background: var(--card);
-      border: 1px solid var(--border);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      box-shadow: var(--shadow);
-    }
-
-    .hero-card {
-      width: 100%;
-      padding: 44px 25px;
-      border-radius: 30px;
+      place-items: center;
+      padding:
+        max(40px, env(safe-area-inset-top))
+        max(24px, env(safe-area-inset-right))
+        max(40px, env(safe-area-inset-bottom))
+        max(24px, env(safe-area-inset-left));
       text-align: center;
+      animation: reveal .7s cubic-bezier(.2, .8, .2, 1) both;
     }
 
-    .eyebrow,
-    .small-label,
-    .result-label {
-      display: inline-block;
-      color: var(--accent);
-      font-size: 0.7rem;
+    .hello-screen {
+      align-content: center;
+      gap: 18px;
+    }
+
+    .eyebrow {
+      margin: 0;
+      color: var(--light-pink);
+      font-size: .72rem;
       font-weight: 700;
-      letter-spacing: 0.18em;
+      letter-spacing: .22em;
+      text-transform: uppercase;
     }
 
-    .hero-card h1 {
-      margin: 16px 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(2.7rem, 10vw, 4.7rem);
-      line-height: 0.98;
+    .hello-screen h1 {
+      margin: 0;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(4rem, 15vw, 9rem);
+      font-weight: 600;
+      letter-spacing: -.055em;
+      line-height: .78;
+      text-shadow: 0 18px 50px rgba(0, 0, 0, .34);
     }
 
-    .hero-card p {
-      max-width: 520px;
-      margin: 0 auto 27px;
-      color: var(--muted);
-      font-size: 1.02rem;
-      line-height: 1.7;
-    }
-
-    .hero-card small {
+    .hello-screen h1 span {
       display: block;
-      margin-top: 15px;
-      color: var(--muted);
+      margin-top: .28em;
+      color: var(--blush);
+      font-size: .55em;
+      font-style: italic;
+      letter-spacing: -.03em;
     }
 
-    .primary-button,
-    .secondary-button,
-    .mood-card,
-    .secret-button,
-    .icon-button,
-    .close-button {
-      border: 0;
-      cursor: pointer;
-      transition:
-        transform 0.18s ease,
-        opacity 0.18s ease,
-        background 0.2s ease;
+    .loading-line {
+      position: relative;
+      width: min(180px, 45vw);
+      height: 2px;
+      margin-top: 18px;
+      overflow: hidden;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, .12);
     }
 
-    .primary-button {
-      width: 100%;
-      padding: 15px 18px;
-      border-radius: 16px;
-      color: var(--button-text);
+    .loading-line::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, var(--rose), var(--light-pink));
+      transform-origin: left;
+      animation: load 3s linear both;
+    }
+
+    .card {
+      width: min(590px, 100%);
+      padding: clamp(34px, 7vw, 64px);
+      border: 1px solid rgba(255, 216, 232, .24);
+      border-radius: 36px;
       background: linear-gradient(
-        135deg,
-        var(--accent),
-        var(--accent-dark)
+        145deg,
+        rgba(255, 218, 234, .16),
+        rgba(255, 255, 255, .055)
       );
-      font-weight: 700;
+      box-shadow:
+        0 34px 90px rgba(54, 4, 31, .42),
+        inset 0 1px rgba(255, 255, 255, .16);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
     }
 
-    .primary-button:hover,
-    .secondary-button:hover,
-    .mood-card:hover,
-    .secret-button:hover {
+    .heart-seal {
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 26px;
+      border: 1px solid rgba(255, 182, 212, .5);
+      border-radius: 50%;
+      color: var(--blush);
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 2.2rem;
+      box-shadow: 0 0 0 8px rgba(255, 182, 212, .05);
+    }
+
+    .card h2 {
+      margin: 14px 0 18px;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      font-weight: 600;
+      letter-spacing: -.04em;
+      line-height: .95;
+    }
+
+    .message-screen .card h2 {
+      font-size: clamp(2.15rem, 7vw, 3.6rem);
+      line-height: .98;
+    }
+
+    .sweet-note {
+      margin: 0 auto;
+      color: rgba(255, 247, 252, .78);
+      font-size: clamp(1rem, 3.5vw, 1.12rem);
+      line-height: 1.8;
+    }
+
+    .signature-pill {
+      width: fit-content;
+      margin: 24px auto -8px;
+      padding: 9px 15px;
+      border: 1px solid rgba(255, 182, 212, .35);
+      border-radius: 999px;
+      background: rgba(255, 110, 170, .1);
+      color: var(--blush);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+
+    .primary,
+    .yes-button,
+    .no-button,
+    .restart-button {
+      border-radius: 999px;
+      font-weight: 800;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .primary {
+      min-width: 180px;
+      margin-top: 32px;
+      padding: 15px 24px;
+      border: 1px solid rgba(255, 255, 255, .15);
+      background: linear-gradient(120deg, var(--blush), var(--rose));
+      color: #3b0a26;
+      box-shadow: 0 14px 35px rgba(255, 76, 151, .3);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    .primary:hover {
       transform: translateY(-2px);
     }
 
-    .primary-button:active,
-    .secondary-button:active,
-    .mood-card:active,
-    .secret-button:active {
-      transform: scale(0.98);
+    .question-card {
+      position: relative;
+      width: min(680px, 100%);
+      overflow: visible;
     }
 
-    .primary-button:disabled {
-      cursor: not-allowed;
-      opacity: 0.65;
+    .question-kicker {
+      margin: -8px 0 4px;
+      color: var(--blush);
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 3.2rem;
+      line-height: 1;
+      animation: heartbeat 1.8s ease-in-out infinite;
     }
 
-    .topbar {
+    .question-card h2,
+    .success-card h2 {
+      margin: 16px auto;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(3rem, 9vw, 5.6rem);
+      font-weight: 600;
+      letter-spacing: -.055em;
+      line-height: .9;
+    }
+
+    .question-copy,
+    .success-card > p:not(.eyebrow) {
+      max-width: 460px;
+      margin: 0 auto;
+      color: rgba(255, 247, 252, .72);
+      line-height: 1.7;
+    }
+
+    .button-zone {
       display: flex;
+      min-height: 92px;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       gap: 18px;
-      margin: 8px 0 20px;
+      margin-top: 30px;
     }
 
-    .topbar h2 {
-      margin: 5px 0 0;
-      font-size: clamp(1.55rem, 5vw, 2.1rem);
+    .yes-button,
+    .no-button,
+    .restart-button {
+      min-width: 112px;
+      padding: 15px 25px;
     }
 
-    .icon-button {
-      width: 46px;
-      height: 46px;
-      flex-shrink: 0;
-      border-radius: 50%;
-      color: var(--text);
-      background: var(--card);
-      border: 1px solid var(--border);
-      font-size: 1.25rem;
+    .yes-button {
+      position: relative;
+      z-index: 10;
+      border: 1px solid rgba(255, 255, 255, .22);
+      background: linear-gradient(120deg, var(--blush), var(--rose));
+      color: #3b0a26;
+      box-shadow: 0 16px 38px rgba(255, 76, 151, .38);
+      transform-origin: center;
+      transition: transform .32s cubic-bezier(.2, .9, .2, 1.15);
     }
 
-    .mood-grid {
+    .no-button {
+      z-index: 20;
+      border: 1px solid rgba(255, 255, 255, .2);
+      background: rgba(255, 255, 255, .08);
+      color: var(--cream);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition:
+        left .24s cubic-bezier(.2, .8, .2, 1),
+        top .24s cubic-bezier(.2, .8, .2, 1);
+    }
+
+    .no-button.running {
+      position: fixed;
+      margin: 0;
+    }
+
+    .primary:focus-visible,
+    .yes-button:focus-visible,
+    .no-button:focus-visible,
+    .restart-button:focus-visible {
+      outline: 3px solid var(--light-pink);
+      outline-offset: 4px;
+    }
+
+    .no-hint {
+      min-height: 22px;
+      margin: 6px 0 -14px;
+      color: var(--light-pink);
+      font-size: .82rem;
+      animation: reveal .3s ease both;
+    }
+
+    .success-screen {
+      overflow: hidden;
+    }
+
+    .success-card {
+      position: relative;
+      z-index: 2;
+    }
+
+    .success-heart {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
+      place-items: center;
+      width: 92px;
+      height: 92px;
+      margin: -4px auto 25px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, var(--blush), var(--rose));
+      color: #4a0b2e;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 4rem;
+      box-shadow:
+        0 0 0 12px rgba(255, 110, 170, .08),
+        0 18px 45px rgba(255, 76, 151, .25);
+      animation: success-pop .7s cubic-bezier(.2, .9, .25, 1.25) both;
     }
 
-    .mood-card {
-      min-height: 145px;
-      padding: 18px;
-      border-radius: 22px;
-      color: var(--text);
-      background: var(--card);
-      border: 1px solid var(--border);
-      text-align: left;
+    .friendship-badge {
+      display: grid;
+      gap: 5px;
+      width: min(390px, 100%);
+      margin: 26px auto 0;
+      padding: 18px 20px;
+      border: 1px dashed rgba(255, 216, 232, .42);
+      border-radius: 20px;
+      background: rgba(255, 110, 170, .09);
     }
 
-    .mood-icon {
-      display: block;
-      margin-bottom: 18px;
-      font-size: 1.7rem;
+    .friendship-badge span {
+      color: var(--light-pink);
+      font-size: .67rem;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
     }
 
-    .mood-card strong {
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    .mood-card small {
-      color: var(--muted);
-    }
-
-    .result-card,
-    .wheel-section {
-      margin-top: 16px;
-      padding: 22px;
-      border-radius: 24px;
-    }
-
-    .result-card p {
-      min-height: 75px;
-      margin: 14px 0 18px;
-      font-size: 1.14rem;
-      line-height: 1.55;
-      transition: opacity 0.15s ease;
-    }
-
-    .secondary-button {
-      width: 100%;
-      padding: 13px 16px;
-      border-radius: 14px;
-      color: var(--text);
-      background: transparent;
-      border: 1px solid var(--border);
+    .friendship-badge strong {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.8rem;
       font-weight: 600;
     }
 
-    .section-heading {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .friendship-badge small {
+      color: rgba(255, 248, 252, .64);
+      font-size: .72rem;
     }
 
-    .section-heading h3 {
-      margin: 5px 0 0;
-      font-size: 1.35rem;
-    }
-
-    .spark {
-      color: var(--accent);
-      font-size: 1.7rem;
-    }
-
-    .wheel-wrapper {
-      position: relative;
-      width: 230px;
-      height: 230px;
-      margin: 28px auto;
-    }
-
-    .wheel {
-      width: 100%;
-      height: 100%;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      border: 8px solid rgba(255, 255, 255, 0.12);
-      background: conic-gradient(
-        #d5ab5d 0deg 60deg,
-        #7d5f91 60deg 120deg,
-        #b77d65 120deg 180deg,
-        #6f8b7b 180deg 240deg,
-        #b59b73 240deg 300deg,
-        #806a5c 300deg 360deg
-      );
-      box-shadow:
-        inset 0 0 0 5px rgba(0, 0, 0, 0.08),
-        0 15px 35px rgba(0, 0, 0, 0.22);
-      transition: transform 4s cubic-bezier(0.15, 0.65, 0.2, 1);
-    }
-
-    .wheel-center {
-      width: 78px;
-      height: 78px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      color: var(--text);
-      background: var(--background-soft);
-      border: 4px solid var(--border);
-      font-weight: 800;
-      letter-spacing: 0.08em;
-    }
-
-    .pointer {
-      position: absolute;
-      top: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: var(--accent);
-      font-size: 2rem;
-      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    }
-
-    .wheel-result {
-      min-height: 27px;
-      margin-bottom: 0;
-      color: var(--muted);
-      text-align: center;
-    }
-
-    .secret-section {
-      display: flex;
-      justify-content: center;
-      margin: 23px 0 4px;
-    }
-
-    .secret-button {
-      padding: 13px 18px;
-      border-radius: 999px;
-      color: var(--text);
+    .restart-button {
+      margin-top: 30px;
+      border: 1px solid rgba(255, 182, 212, .4);
       background: transparent;
-      border: 1px dashed var(--accent);
+      color: var(--light-pink);
     }
 
-    footer {
-      padding: 25px 10px 0;
-      color: var(--muted);
-      font-size: 0.88rem;
-      text-align: center;
-    }
-
-    .modal {
-      position: fixed;
-      inset: 0;
-      z-index: 10;
-      display: none;
-      place-items: center;
-      padding: 18px;
-      background: rgba(0, 0, 0, 0.67);
-    }
-
-    .modal.open {
-      display: grid;
-      animation: fade-in 0.25s ease;
-    }
-
-    .modal-card {
-      position: relative;
-      width: min(100%, 470px);
-      padding: 31px 22px 25px;
-      border-radius: 26px;
-      text-align: center;
-    }
-
-    .close-button {
+    .confetti span {
       position: absolute;
-      top: 10px;
-      right: 12px;
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      color: var(--text);
-      background: transparent;
-      font-size: 1.7rem;
+      z-index: 1;
+      top: -10vh;
+      left: var(--x);
+      color: var(--blush);
+      font-size: clamp(1rem, 3vw, 1.8rem);
+      animation: confetti-fall 4.2s linear infinite;
+      animation-delay: var(--delay);
     }
 
-    .secret-emoji {
-      font-size: 3rem;
+    @keyframes load {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
     }
 
-    .modal-card h3 {
-      margin: 10px 0;
-      font-size: 1.45rem;
-    }
-
-    .modal-card p {
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .secret-message {
-      min-height: 28px;
-      margin-bottom: 0 !important;
-      color: var(--accent) !important;
-      font-weight: 700;
-    }
-
-    @keyframes fade-in {
+    @keyframes reveal {
       from {
         opacity: 0;
-        transform: translateY(8px);
+        transform: translateY(12px) scale(.99);
       }
 
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform: none;
       }
     }
 
-    @media (min-width: 650px) {
-      .app {
-        padding: 30px 22px 60px;
+    @keyframes drift {
+      to {
+        transform: translate3d(24px, 30px, 0) scale(1.08);
+      }
+    }
+
+    @keyframes float {
+      0%,
+      100% {
+        transform: translateY(0);
+        opacity: .2;
       }
 
-      .hero-card {
-        padding: 58px 46px;
+      50% {
+        transform: translateY(-16px) rotate(8deg);
+        opacity: .5;
+      }
+    }
+
+    @keyframes heartbeat {
+      0%,
+      100% {
+        transform: scale(1);
       }
 
-      .mood-grid {
-        grid-template-columns: repeat(4, 1fr);
+      45% {
+        transform: scale(1.13);
+      }
+    }
+
+    @keyframes success-pop {
+      from {
+        opacity: 0;
+        transform: scale(.45) rotate(-12deg);
       }
 
-      .mood-card {
-        min-height: 160px;
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes confetti-fall {
+      from {
+        transform: translate3d(0, -10vh, 0) rotate(0);
+      }
+
+      to {
+        transform: translate3d(35px, 120vh, 0) rotate(520deg);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .experience::before {
+        inset: 9px;
+        border-radius: 24px;
+      }
+
+      .card {
+        padding-inline: 27px;
+        border-radius: 28px;
+      }
+
+      .sweet-note {
+        line-height: 1.7;
+      }
+
+      .button-zone {
+        gap: 12px;
+      }
+
+      .message-screen .card {
+        padding-block: 32px;
+      }
+
+      .success-card h2 {
+        font-size: clamp(2.65rem, 13vw, 4rem);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *:not(.no-button),
+      *::before,
+      *::after {
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="background-orb orb-one"></div>
-  <div class="background-orb orb-two"></div>
+  <main class="experience">
+    <div class="orb one" aria-hidden="true"></div>
+    <div class="orb two" aria-hidden="true"></div>
 
-  <main class="app">
-    <section id="welcome-screen" class="screen active">
-      <div class="hero-card glass">
-        <span class="eyebrow">ANTI-BOREDOM KIT</span>
+    <div class="sparkles" aria-hidden="true">
+      <span>✦</span>
+      <span>♡</span>
+      <span>✦</span>
+      <span>♡</span>
+      <span>✦</span>
+    </div>
 
-        <h1>
-          A little break
-          <br />
-          made for you ✨
-        </h1>
+    <section id="hello" class="screen hello-screen" aria-live="polite">
+      <p class="eyebrow">Binks gen yon ti sipriz pou ou</p>
 
-        <p>
-          Whenever the day feels too long or boredom shows up,
-          press the button and let this page entertain you for a moment.
-        </p>
+      <h1>
+        Hello
+        <span>Sexy Chocolate</span>
+      </h1>
 
-        <button id="start-button" class="primary-button">
-          Start the distraction
-        </button>
-
-        <small>No pressure. Just a little smile.</small>
-      </div>
+      <div class="loading-line" aria-label="Mesaj la ap pare"></div>
     </section>
 
-    <section id="main-screen" class="screen">
-      <header class="topbar">
-        <div>
-          <span class="small-label">WELCOME BACK</span>
-          <h2>What do you need right now?</h2>
+    <section id="message" class="screen message-screen" hidden>
+      <article class="card">
+        <div class="heart-seal" aria-hidden="true">♡</div>
+
+        <p class="eyebrow">Pou Nanie sèlman</p>
+
+        <h2>Pa panike… se pa PIN kat ou m pral mande 😂</h2>
+
+        <p class="sweet-note">
+          Nanie, ou gen yon bèl enèji ki toujou fè Binks souri.
+          Mwen renmen jan nou pale ak jan ou fè tout bagay vin pi lejè.
+          Men gen yon ti kestyon serye — bon, serye-ish —
+          mwen vle poze w 🤭
+        </p>
+
+        <div class="signature-pill">
+          Binks → Sexy Chocolate
+        </div>
+
+        <button id="continue" class="primary" type="button">
+          Ann wè kestyon an 🤭
+        </button>
+      </article>
+    </section>
+
+    <section id="question" class="screen" hidden>
+      <article class="card question-card">
+        <p class="question-kicker" aria-hidden="true">♡</p>
+
+        <p class="eyebrow">
+          Pa gen presyon… prèske pa gen 😌
+        </p>
+
+        <h2>
+          Nanie, ou ta renmen vin zanmi m?
+        </h2>
+
+        <p class="question-copy">
+          Avantaj yo: blag gratis, bon vib, epi yon moun
+          k ap toujou rele w Sexy Chocolate 🤭
+        </p>
+
+        <div class="button-zone">
+          <button id="yes" class="yes-button" type="button">
+            Yes <span aria-hidden="true">♡</span>
+          </button>
+
+          <button id="no" class="no-button" type="button">
+            Non
+          </button>
+        </div>
+
+        <p
+          id="hint"
+          class="no-hint"
+          aria-live="polite"
+          hidden
+        ></p>
+      </article>
+    </section>
+
+    <section id="success" class="screen success-screen" hidden>
+      <div class="confetti" aria-hidden="true">
+        <span style="--x:7%; --delay:-.4s">✦</span>
+        <span style="--x:14%; --delay:-2.4s">♡</span>
+        <span style="--x:21%; --delay:-1.2s">♡</span>
+        <span style="--x:28%; --delay:-3.2s">✦</span>
+        <span style="--x:35%; --delay:-.8s">♡</span>
+        <span style="--x:42%; --delay:-2.8s">♡</span>
+        <span style="--x:49%; --delay:-1.8s">✦</span>
+        <span style="--x:56%; --delay:-3.7s">♡</span>
+        <span style="--x:63%; --delay:-.1s">♡</span>
+        <span style="--x:70%; --delay:-2.1s">✦</span>
+        <span style="--x:77%; --delay:-1.4s">♡</span>
+        <span style="--x:84%; --delay:-3.4s">♡</span>
+        <span style="--x:91%; --delay:-.6s">✦</span>
+      </div>
+
+      <article class="card success-card">
+        <div class="success-heart" aria-hidden="true">
+          ♡
+        </div>
+
+        <p class="eyebrow">
+          Kontra amitye valide
+        </p>
+
+        <h2>
+          Felisitasyon, Nanie! 🎉
+        </h2>
+
+        <p>
+          Ou fèk vin zanmi ofisyèl Binks.
+          Ou genyen blag gratis, bon vib,
+          ak tit Sexy Chocolate pou lavi 🤭
+        </p>
+
+        <div class="friendship-badge">
+          <span>Sètifika amitye</span>
+          <strong>Nanie × Binks</strong>
+          <small>
+            Depi 2026 • Renouvlab otomatikman 😂
+          </small>
         </div>
 
         <button
-          id="theme-button"
-          class="icon-button"
-          aria-label="Change theme"
+          id="restart"
+          class="restart-button"
+          type="button"
         >
-          ☾
+          Relire kontra a
         </button>
-      </header>
-
-      <section class="mood-grid" aria-label="Activities">
-        <button class="mood-card" data-action="joke">
-          <span class="mood-icon">😂</span>
-          <strong>Make me laugh</strong>
-          <small>A quick little joke</small>
-        </button>
-
-        <button class="mood-card" data-action="question">
-          <span class="mood-icon">💭</span>
-          <strong>Ask me something</strong>
-          <small>A random question</small>
-        </button>
-
-        <button class="mood-card" data-action="challenge">
-          <span class="mood-icon">🎯</span>
-          <strong>Give me a challenge</strong>
-          <small>A small thing to do</small>
-        </button>
-
-        <button class="mood-card" data-action="motivation">
-          <span class="mood-icon">✨</span>
-          <strong>Motivate me</strong>
-          <small>A little positive energy</small>
-        </button>
-      </section>
-
-      <section class="result-card glass" aria-live="polite">
-        <span id="result-label" class="result-label">
-          A MESSAGE FOR YOU
-        </span>
-
-        <p id="result-text">
-          Choose one of the buttons to begin.
-        </p>
-
-        <button id="again-button" class="secondary-button">
-          Give me another one
-        </button>
-      </section>
-
-      <section class="wheel-section glass">
-        <div class="section-heading">
-          <div>
-            <span class="small-label">SURPRISE WHEEL</span>
-            <h3>Let chance decide</h3>
-          </div>
-
-          <span class="spark">✦</span>
-        </div>
-
-        <div class="wheel-wrapper">
-          <div id="wheel" class="wheel">
-            <div class="wheel-center">SPIN</div>
-          </div>
-
-          <div class="pointer">▼</div>
-        </div>
-
-        <button id="spin-button" class="primary-button">
-          Spin the wheel
-        </button>
-
-        <p id="wheel-result" class="wheel-result">
-          Your result will appear here.
-        </p>
-      </section>
-
-      <section class="secret-section">
-        <button id="secret-button" class="secret-button">
-          Do not press this button 👀
-        </button>
-      </section>
-
-      <footer>
-        <p>
-          A simple little space to make the day feel lighter.
-        </p>
-      </footer>
+      </article>
     </section>
   </main>
 
-  <div id="secret-modal" class="modal" aria-hidden="true">
-    <div class="modal-card glass">
-      <button
-        id="close-modal-button"
-        class="close-button"
-        aria-label="Close"
-      >
-        ×
-      </button>
-
-      <div class="secret-emoji">😂</div>
-
-      <h3>I knew you would press it!</h3>
-
-      <p>
-        You were way too curious to leave that button alone.
-        At least it made you smile for a second.
-      </p>
-
-      <button id="surprise-button" class="primary-button">
-        Give me the surprise
-      </button>
-
-      <p id="secret-message" class="secret-message"></p>
-    </div>
-  </div>
-
   <script>
-    const content = {
-      joke: [
-        "Why did the phone wear glasses? Because it lost its contacts. 😂",
-
-        "I tried to organize a hide-and-seek game at work, but good employees are always hard to find. 😅",
-
-        "Coffee told me, “Without me, you are not yourself.” I had to agree. ☕😂",
-
-        "I am on a seafood diet. I see food, and I eat it.",
-
-        "Boredom called. I told it you were unavailable today.",
-
-        "Why did the computer go to therapy? It had too many unresolved issues.",
-
-        "My bed and I are perfect for each other, but my alarm clock keeps trying to break us up.",
-
-        "I told myself I would be productive today. We both laughed."
-      ],
-
-      question: [
-        "What small thing can always make you smile, even on a bad day?",
-
-        "If you could spend one day anywhere in the world, where would you go?",
-
-        "What song could you listen to twenty times without getting tired of it?",
-
-        "What is something people often misunderstand about you?",
-
-        "If you could have one superpower for twenty-four hours, what would it be?",
-
-        "What is one of your favorite memories from work or school?",
-
-        "Coffee, tea, or juice—and why?",
-
-        "If your life had a theme song today, what song would it be?",
-
-        "What is one thing you would love to learn just for fun?",
-
-        "Would you rather have unlimited free travel or unlimited free food?"
-      ],
-
-      challenge: [
-        "Find something near you that matches the color of your outfit.",
-
-        "Write down three small things you appreciate about today.",
-
-        "Take thirty seconds to breathe slowly and relax your shoulders.",
-
-        "Send a random emoji to someone and do not explain it for two minutes. 😂",
-
-        "Make a mini playlist with three songs that improve your mood.",
-
-        "Choose one word to describe your day so far.",
-
-        "Drink a little water before you continue.",
-
-        "Take a funny picture of an ordinary object.",
-
-        "Compliment someone sincerely today.",
-
-        "Do a tiny dance for ten seconds, even if nobody is watching."
-      ],
-
-      motivation: [
-        "You do not have to do everything today. One small step still counts.",
-
-        "Even an ordinary day can hold one beautiful little moment.",
-
-        "You are stronger than a difficult moment can make you feel.",
-
-        "Taking a break does not mean giving up. It means giving yourself room to breathe.",
-
-        "Your presence can make a space feel lighter without you even realizing it.",
-
-        "Do not compare your behind-the-scenes life to someone else’s highlight reel.",
-
-        "Today does not have to be perfect to be meaningful.",
-
-        "You are allowed to move at your own pace.",
-
-        "A difficult day does not erase all the progress you have made.",
-
-        "There is nothing wrong with protecting your peace."
-      ]
-    };
-
-    const wheelOptions = [
-      "Listen to a song you love 🎵",
-      "Take a five-minute break 🌿",
-      "Send a meme to a friend 😂",
-      "Drink some water 💧",
-      "Take a funny selfie 🤳",
-      "Choose a snack you enjoy 🍫"
+    const screens = [
+      ...document.querySelectorAll(".screen")
     ];
 
-    const secretMessages = [
-      "Surprise: you deserve a peaceful little moment today. ✨",
+    const message =
+      document.querySelector("#message");
 
-      "Secret mission: smile for five seconds, even for no reason. 😄",
+    const question =
+      document.querySelector("#question");
 
-      "Good news: you officially have permission to take a break without feeling guilty.",
+    const success =
+      document.querySelector("#success");
 
-      "Secret message: do not let a bad ten minutes take over your whole day.",
+    const yes =
+      document.querySelector("#yes");
 
-      "You found the hidden button. Your reward is a little positive energy. 🌟",
+    const no =
+      document.querySelector("#no");
 
-      "Reminder: you are doing better than you think.",
+    const hint =
+      document.querySelector("#hint");
 
-      "Your secret reward is one imaginary day off. Use it wisely. 😂"
+    const noLabels = [
+      "Non",
+      "Ou sèten? 🤨",
+      "Pa fè sa 😭",
+      "Yes la pi cute 🤭",
+      "Sistèm: REFIZE 😂",
+      "Ankò, Nanie? 😌",
+      "Ou pap kenbe m 😎"
     ];
 
-    const welcomeScreen = document.getElementById("welcome-screen");
-    const mainScreen = document.getElementById("main-screen");
+    const noHints = [
+      "",
+      "Premye tantativ la echwe 😂",
+      "Nanie, ou vrèman detèmine wi 😭",
+      "Gade jan Yes la ap pran konfyans 🤭",
+      "Binks ap gade w ap kouri dèyè bouton an 😂",
+      "Sistèm nan aksepte yon sèl bon repons 😌",
+      "Sexy Chocolate… lage bouton Non an non 😂"
+    ];
 
-    const startButton = document.getElementById("start-button");
-    const themeButton = document.getElementById("theme-button");
-    const againButton = document.getElementById("again-button");
+    let noClicks = 0;
 
-    const resultLabel = document.getElementById("result-label");
-    const resultText = document.getElementById("result-text");
-
-    const moodButtons = document.querySelectorAll(".mood-card");
-
-    const spinButton = document.getElementById("spin-button");
-    const wheel = document.getElementById("wheel");
-    const wheelResult = document.getElementById("wheel-result");
-
-    const secretButton = document.getElementById("secret-button");
-    const secretModal = document.getElementById("secret-modal");
-    const closeModalButton = document.getElementById(
-      "close-modal-button"
-    );
-
-    const surpriseButton = document.getElementById(
-      "surprise-button"
-    );
-
-    const secretMessage = document.getElementById(
-      "secret-message"
-    );
-
-    let currentAction = "motivation";
-    let currentRotation = 0;
-    let spinning = false;
-
-    const labels = {
-      joke: "A QUICK JOKE",
-      question: "RANDOM QUESTION",
-      challenge: "SMALL CHALLENGE",
-      motivation: "POSITIVE ENERGY"
-    };
-
-    function getRandomItem(items) {
-      const randomIndex = Math.floor(Math.random() * items.length);
-      return items[randomIndex];
-    }
-
-    function showRandomMessage(action) {
-      currentAction = action;
-      resultLabel.textContent = labels[action];
-      resultText.style.opacity = "0";
-
-      setTimeout(() => {
-        resultText.textContent = getRandomItem(content[action]);
-        resultText.style.opacity = "1";
-      }, 140);
-    }
-
-    startButton.addEventListener("click", () => {
-      welcomeScreen.classList.remove("active");
-      mainScreen.classList.add("active");
-
-      showRandomMessage("motivation");
-
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+    function show(screen) {
+      screens.forEach(item => {
+        item.hidden = item !== screen;
       });
-    });
+    }
 
-    moodButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const selectedAction = button.dataset.action;
-        showRandomMessage(selectedAction);
+    setTimeout(() => {
+      show(message);
+    }, 3000);
+
+    document
+      .querySelector("#continue")
+      .addEventListener("click", () => {
+        show(question);
       });
+
+    no.addEventListener("click", () => {
+      noClicks += 1;
+
+      yes.style.transform =
+        `scale(${1 + noClicks * 0.28})`;
+
+      const messageIndex = Math.min(
+        noClicks,
+        noLabels.length - 1
+      );
+
+      no.textContent =
+        noLabels[messageIndex];
+
+      hint.textContent =
+        noHints[messageIndex];
+
+      const edge = 22;
+
+      const width = Math.max(
+        no.offsetWidth || 112,
+        200
+      );
+
+      const height =
+        no.offsetHeight || 54;
+
+      const maxLeft = Math.max(
+        edge,
+        window.innerWidth - width - edge
+      );
+
+      const maxTop = Math.max(
+        edge,
+        window.innerHeight - height - edge
+      );
+
+      no.classList.add("running");
+
+      no.style.left =
+        `${edge + Math.random() * (maxLeft - edge)}px`;
+
+      no.style.top =
+        `${edge + Math.random() * (maxTop - edge)}px`;
+
+      hint.hidden = false;
     });
 
-    againButton.addEventListener("click", () => {
-      showRandomMessage(currentAction);
+    yes.addEventListener("click", () => {
+      show(success);
     });
 
-    themeButton.addEventListener("click", () => {
-      document.body.classList.toggle("light");
+    document
+      .querySelector("#restart")
+      .addEventListener("click", () => {
+        noClicks = 0;
 
-      if (document.body.classList.contains("light")) {
-        themeButton.textContent = "☀";
-      } else {
-        themeButton.textContent = "☾";
-      }
-    });
+        yes.style.transform =
+          "scale(1)";
 
-    spinButton.addEventListener("click", () => {
-      if (spinning) {
-        return;
-      }
+        no.classList.remove("running");
 
-      spinning = true;
-      spinButton.disabled = true;
-      spinButton.textContent = "The wheel is spinning...";
-      wheelResult.textContent =
-        "Let us see what chance chooses...";
+        no.removeAttribute("style");
 
-      const extraTurns = 5 + Math.floor(Math.random() * 4);
-      const randomDegrees = Math.floor(Math.random() * 360);
+        no.textContent =
+          noLabels[0];
 
-      currentRotation += extraTurns * 360 + randomDegrees;
+        hint.textContent = "";
 
-      wheel.style.transform =
-        "rotate(" + currentRotation + "deg)";
+        hint.hidden = true;
 
-      setTimeout(() => {
-        const normalizedRotation =
-          (360 - (currentRotation % 360)) % 360;
-
-        const selectedIndex =
-          Math.floor(normalizedRotation / 60) %
-          wheelOptions.length;
-
-        wheelResult.textContent =
-          wheelOptions[selectedIndex];
-
-        spinButton.disabled = false;
-        spinButton.textContent = "Spin again";
-        spinning = false;
-      }, 4100);
-    });
-
-    function openSecretModal() {
-      secretModal.classList.add("open");
-      secretModal.setAttribute("aria-hidden", "false");
-    }
-
-    function closeSecretModal() {
-      secretModal.classList.remove("open");
-      secretModal.setAttribute("aria-hidden", "true");
-      secretMessage.textContent = "";
-    }
-
-    secretButton.addEventListener("click", openSecretModal);
-
-    closeModalButton.addEventListener(
-      "click",
-      closeSecretModal
-    );
-
-    secretModal.addEventListener("click", (event) => {
-      if (event.target === secretModal) {
-        closeSecretModal();
-      }
-    });
-
-    surpriseButton.addEventListener("click", () => {
-      secretMessage.textContent =
-        getRandomItem(secretMessages);
-    });
-
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        closeSecretModal();
-      }
-    });
+        show(message);
+      });
   </script>
 </body>
 </html>

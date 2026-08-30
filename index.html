@@ -1,5 +1,3 @@
-Kole tout kòd sa a nan dosye index.html sou GitHub:
-
 <!doctype html>
 <html lang="ht">
 <head>
@@ -7,6 +5,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#fff3f8">
   <title>Pou Lily 💗</title>
+
   <style>
     :root {
       --ink: #5c213f;
@@ -14,30 +13,37 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
       --pink: #e84b91;
       --pink-dark: #ce2f78;
     }
+
     * {
       box-sizing: border-box;
     }
+
     html,
     body {
       min-height: 100%;
       margin: 0;
     }
+
     body {
       overflow: hidden;
       background: #fff7fb;
       color: var(--ink);
       font-family: Arial, sans-serif;
     }
+
     button,
     textarea {
       font: inherit;
     }
+
     button {
       cursor: pointer;
     }
+
     [hidden] {
       display: none !important;
     }
+
     .site {
       position: relative;
       isolation: isolate;
@@ -56,6 +62,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
           #ffddea 100%
         );
     }
+
     .site::before {
       position: fixed;
       inset: 12px;
@@ -65,6 +72,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
       content: "";
       pointer-events: none;
     }
+
     .glow {
       position: fixed;
       z-index: -1;
@@ -72,6 +80,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
       opacity: .58;
       animation: drift 13s ease-in-out infinite alternate;
     }
+
     .glow.one {
       top: -120px;
       right: -110px;
@@ -79,6 +88,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
       height: 380px;
       background: rgba(247, 129, 181, .36);
     }
+
     .glow.two {
       bottom: -160px;
       left: -130px;
@@ -87,6 +97,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
       background: rgba(255, 202, 226, .66);
       animation-delay: -4s;
     }
+
     .scene {
       position: relative;
       z-index: 3;
@@ -97,6 +108,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
       text-align: center;
       animation: enter .8s ease both;
     }
+
     .eyebrow {
       margin: 0 0 18px;
       color: var(--pink-dark);
@@ -105,6 +117,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
       letter-spacing: .2em;
       text-transform: uppercase;
     }
+
     .intro-title {
       margin: 0;
       font-family: Georgia, serif;
@@ -117,6 +130,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
       animation:
         floating 2.8s ease-in-out infinite alternate;
     }
+
     .loading {
       display: block;
       width: min(210px, 44vw);
@@ -126,6 +140,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
       border-radius: 999px;
       background: rgba(219, 75, 139, .15);
     }
+
     .loading::after {
       display: block;
       width: 100%;
@@ -141,6 +156,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
       content: "";
       animation: loading 2.7s linear both;
     }
+
     .card {
       width: min(100%, 680px);
       border: 1px solid rgba(255, 255, 255, .92);
@@ -150,12 +166,14 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
         0 34px 90px rgba(153, 48, 95, .14);
       backdrop-filter: blur(24px);
     }
+
     .question-card {
       padding:
         clamp(38px, 8vw, 72px)
         clamp(24px, 8vw, 65px)
         38px;
     }
+
     .question-card h1,
     .note-card h1 {
       margin: 0;
@@ -165,6 +183,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
       letter-spacing: -.045em;
       line-height: 1.06;
     }
+
     .choices {
       display: flex;
       min-height: 116px;
@@ -173,6 +192,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
       gap: 18px;
       margin-top: 24px;
     }
+
     .btn {
       min-width: 118px;
       min-height: 54px;
@@ -184,6 +204,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
         box-shadow .25s ease,
         opacity .25s ease;
     }
+
     .btn-primary {
       border: none;
       background:
@@ -196,10 +217,12 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
       box-shadow:
         0 13px 28px rgba(206, 47, 120, .28);
     }
+
     .btn-primary:hover {
       box-shadow:
         0 16px 34px rgba(206, 47, 120, .36);
     }
+
     .btn-secondary {
       border:
         1px solid rgba(210, 68, 132, .22);
@@ -209,11 +232,13 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
       box-shadow:
         0 10px 24px rgba(121, 46, 80, .1);
     }
+
     .hint {
       margin: 4px 0 0;
       color: var(--muted);
       font-size: .82rem;
     }
+
     .credits-scene {
       position: relative;
       z-index: 3;
@@ -221,6 +246,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
       overflow: hidden;
       text-align: center;
     }
+
     .credits-scene::before,
     .credits-scene::after {
       position: fixed;
@@ -231,6 +257,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
       content: "";
       pointer-events: none;
     }
+
     .credits-scene::before {
       top: 0;
       background:
@@ -239,6 +266,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
           transparent
         );
     }
+
     .credits-scene::after {
       bottom: 0;
       background:
@@ -247,6 +275,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
           #ffe8f2 92%
         );
     }
+
     .hold-on {
       position: fixed;
       top: 43%;
@@ -269,23 +298,27 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
         transform .7s ease;
       pointer-events: none;
     }
+
     .hold-on.is-hidden {
       opacity: 0;
       filter: blur(8px);
       transform:
         translate(-50%, -62%) scale(.92);
     }
+
     .credits {
       width: min(84vw, 710px);
       margin: 0 auto;
       padding: 12vh 0 30vh;
       will-change: transform;
     }
+
     .credits.running {
       animation:
         roll var(--duration, 120s)
         linear forwards;
     }
+
     .credits-kicker {
       margin: 0 0 18px !important;
       color: var(--pink-dark);
@@ -294,6 +327,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
       font-weight: bold;
       letter-spacing: .3em;
     }
+
     .credits h1 {
       margin: 0 0 54px;
       font-family: Georgia, serif;
@@ -302,12 +336,14 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
       letter-spacing: -.045em;
       line-height: 1.03;
     }
+
     .divider {
       width: 58px;
       height: 2px;
       margin: -24px auto 48px;
       background: var(--pink);
     }
+
     .credits > p,
     .credits blockquote {
       margin: 0 0 40px;
@@ -316,6 +352,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
         clamp(1.18rem, 3.6vw, 1.62rem);
       line-height: 1.8;
     }
+
     .credits blockquote {
       padding: 34px 18px;
       border-top:
@@ -325,29 +362,35 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
       color: #8b315b;
       font-style: italic;
     }
+
     .signature {
       margin-top: 64px !important;
       color: var(--pink-dark);
       font-style: italic;
     }
+
     .finish-reading {
       display: none;
       margin: 20px auto;
     }
+
     .note-card {
       padding: clamp(32px, 7vw, 60px);
       text-align: left;
     }
+
     .note-card .eyebrow,
     .note-card h1,
     .note-copy {
       text-align: center;
     }
+
     .note-copy {
       margin: 18px auto 28px;
       color: var(--muted);
       line-height: 1.6;
     }
+
     textarea {
       display: block;
       width: 100%;
@@ -361,13 +404,16 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
       padding: 20px;
       line-height: 1.6;
     }
+
     textarea:focus {
       outline:
         3px solid rgba(232, 75, 145, .22);
     }
+
     textarea::placeholder {
       color: #b8889e;
     }
+
     .note-meta {
       display: flex;
       justify-content: space-between;
@@ -375,15 +421,18 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
       color: #a57189;
       font-size: .73rem;
     }
+
     .send {
       width: 100%;
       min-height: 58px;
     }
+
     .send:disabled {
       cursor: not-allowed;
       opacity: .45;
       box-shadow: none;
     }
+
     .whatsapp-note {
       margin: 14px 16px 0;
       color: var(--muted);
@@ -391,6 +440,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
       line-height: 1.5;
       text-align: center;
     }
+
     .sr-only {
       position: absolute;
       width: 1px;
@@ -401,95 +451,117 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
       white-space: nowrap;
       border: 0;
     }
+
     @keyframes enter {
       from {
         opacity: 0;
         transform:
           translateY(16px) scale(.985);
       }
+
       to {
         opacity: 1;
         transform:
           translateY(0) scale(1);
       }
     }
+
     @keyframes floating {
       from {
         transform: translateY(-4px);
       }
+
       to {
         transform: translateY(5px);
       }
     }
+
     @keyframes loading {
       from {
         transform: translateX(-105%);
       }
+
       to {
         transform: translateX(105%);
       }
     }
+
     @keyframes drift {
       from {
         transform:
           translate(-20px, -10px) scale(.96);
       }
+
       to {
         transform:
           translate(25px, 20px) scale(1.06);
       }
     }
+
     @keyframes roll {
       from {
         transform: translateY(100svh);
       }
+
       to {
         transform:
           translateY(calc(-100% - 16svh));
       }
     }
+
     @media (max-width: 520px) {
       .site::before {
         inset: 10px;
         border-radius: 26px;
       }
+
       .scene {
         padding: 25px 18px;
       }
+
       .card {
         border-radius: 28px;
       }
+
       .question-card {
         padding: 42px 22px 28px;
       }
+
       .choices {
         gap: 12px;
       }
+
       .credits > p,
       .credits blockquote {
         margin-bottom: 32px;
         line-height: 1.72;
       }
+
       .note-card {
         padding: 32px 20px;
       }
     }
+
     @media (prefers-reduced-motion: reduce) {
       .credits-scene.reduced {
         overflow-y: auto;
       }
+
       .credits-scene.reduced::before,
       .credits-scene.reduced::after {
         display: none;
       }
+
       .credits-scene.reduced .credits {
         padding: 70px 0;
         transform: none;
         animation: none;
       }
+
       .credits-scene.reduced .hold-on {
         display: none;
       }
+
       .credits-scene.reduced
       .finish-reading {
         display: block;
@@ -497,21 +569,26 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
     }
   </style>
 </head>
+
 <body>
   <main class="site">
     <div class="glow one"></div>
     <div class="glow two"></div>
+
     <section id="intro" class="scene">
       <div>
         <p class="eyebrow">
           Yon ti bagay pou ou
         </p>
+
         <h1 class="intro-title">
           Hey Lily🥰
         </h1>
+
         <span class="loading"></span>
       </div>
     </section>
+
     <section
       id="question"
       class="scene"
@@ -521,9 +598,11 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
         <p class="eyebrow">
           Juste yon ti kesyon…
         </p>
+
         <h1>
           Èske w gen yon crush nan moman?
         </h1>
+
         <div class="choices">
           <button
             id="yes"
@@ -532,6 +611,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
           >
             Wi 💗
           </button>
+
           <button
             id="no"
             class="btn btn-secondary"
@@ -540,15 +620,18 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
             Non
           </button>
         </div>
+
         <p class="hint">
           Chwazi byen 😌
         </p>
+
         <span
           id="noStatus"
           class="sr-only"
         ></span>
       </div>
     </section>
+
     <section
       id="letter"
       class="credits-scene"
@@ -560,6 +643,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
       >
         Hold on🤭
       </p>
+
       <div
         id="credits"
         class="credits"
@@ -570,10 +654,13 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
         >
           POU LILY
         </p>
+
         <h1>
           Gen yon bagay m te vle di w…
         </h1>
+
         <div class="divider"></div>
+
         <p>
           M te vle pran yon ti moman pou m
           di w yon bagay, honestly.
@@ -586,6 +673,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
           Avè w, menm sijè ki pi simple yo
           konn vin intéressant.
         </p>
+
         <p>
           Yon ti blag ka tounen yon gwo ri,
           epi yon simple question ka louvri
@@ -595,6 +683,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
           men an menm tan li gen yon little
           something ki toujou kenbe attention m.
         </p>
+
         <p>
           Sa m apresye plis toujou,
           se fason ou pa janm prese di:
@@ -605,6 +694,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
           oswa yon lòt ti pawòl pou fè moman
           an dire un peu plus longtemps.
         </p>
+
         <p>
           Petèt ou pa menm realize jan sa
           fè m plezi.
@@ -617,6 +707,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
           fè ti bêtises,
           epi bliye time ap pase.
         </p>
+
         <p>
           Gen lè m gade lè a apre nou fin
           pale,
@@ -628,6 +719,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
           li plis sanble ak yon little escape
           m pa t konnen m te bezwen.
         </p>
+
         <p>
           Gen yon calme nan fason ou pale
           avè m,
@@ -639,32 +731,46 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
           kèk minutes ap pale avè w konn fè
           tout bagay vin plus léger.
         </p>
+
         <p>
           E si m ta mete santiman sa nan yon
           ti poème,
           m ta ekri l konsa:
         </p>
+
         <blockquote>
           Ou se ti virgule ki anpeche
           fraz m fini,<br>
+
           ti question ki fè silence m
           pran lavi.<br>
+
           Lè words yo ta vle dòmi,<br>
+
           vibe ou reveye yo doucement.<br>
+
           Lè time ta vle kouri,<br>
+
           vwa ou fè l mache au ralenti.<br>
+
           Nou pale, nou ri, nou pèdi tras
           minutes yo,<br>
+
           tankou lannuit bliye li dwe laisser
           place au soleil.<br>
+
           E chak fwa conversation an prèske
           fini,<br>
+
           ou jwenn yon lòt mot pou kenbe l
           alive.<br>
+
           Si pawòl nou yo te stars,<br>
+
           m kwè menm syèl la t ap manke
           espace.
         </blockquote>
+
         <p>
           Se pa paske nou toujou ap pale de
           bagay extraordinaires,
@@ -677,6 +783,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
           M renmen jan conversation an pa
           janm santi l one-sided.
         </p>
+
         <p>
           E m renmen lefèt ou toujou sanble
           vle kèk minutes anplis avè m.
@@ -685,6 +792,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
           e m pa prese mete okenn label sou li.
           M jis konnen m apprécie l énormément.
         </p>
+
         <p>
           M apresye ou,
           énergie ou,
@@ -692,17 +800,17 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
           ak tout ti moments nou kreye
           par hasard.
         </p>
+
         <p>
           Donk, si m toujou ret ap pale avè w,
           se paske vibe ou vaut chaque minute
           de plus. ❤️
         </p>
-        <p
-          id="signature"
-          class="signature"
-        >
+
+        <p class="signature">
           — Binks
         </p>
+
         <button
           id="finishReading"
           class="btn btn-primary finish-reading"
@@ -712,6 +820,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
         </button>
       </div>
     </section>
+
     <section
       id="note"
       class="scene"
@@ -724,13 +833,16 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
         <p class="eyebrow">
           Apre tout pawòl sa yo…
         </p>
+
         <h1>
           Kite yon ti nòt pou Binks 💌
         </h1>
+
         <p class="note-copy">
           Ekri sa w santi a,
           menm si se sèlman kèk mo.
         </p>
+
         <textarea
           id="message"
           placeholder="Ekri nòt ou la…"
@@ -738,14 +850,17 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
           maxlength="1200"
           required
         ></textarea>
+
         <div class="note-meta">
           <span id="count">
             0/1200
           </span>
+
           <span>
             Pran tout tan w
           </span>
         </div>
+
         <button
           id="send"
           class="btn btn-primary send"
@@ -754,6 +869,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
         >
           Voye bay Binks sou WhatsApp
         </button>
+
         <p class="whatsapp-note">
           WhatsApp ap louvri ak nòt la pare.
           Peze <strong>Send</strong> pou
@@ -762,48 +878,63 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
       </form>
     </section>
   </main>
+
   <script>
     const intro =
       document.getElementById("intro");
+
     const question =
       document.getElementById("question");
+
     const letter =
       document.getElementById("letter");
+
     const noteScene =
       document.getElementById("note");
+
     const yesButton =
       document.getElementById("yes");
+
     const noButton =
       document.getElementById("no");
+
     const holdOn =
       document.getElementById("holdOn");
+
     const credits =
       document.getElementById("credits");
+
     const creditsLead =
       document.getElementById("creditsLead");
-    const signature =
-      document.getElementById("signature");
+
     const finishReading =
       document.getElementById(
         "finishReading"
       );
+
     const noteForm =
       document.getElementById("noteForm");
+
     const messageBox =
       document.getElementById("message");
+
     const sendButton =
       document.getElementById("send");
+
     const count =
       document.getElementById("count");
+
     const noStatus =
       document.getElementById("noStatus");
+
     const reducedMotion =
       window.matchMedia(
         "(prefers-reduced-motion: reduce)"
       ).matches;
+
     let noClicks = 0;
     let creditsObserver = null;
-    let noteObserver = null;
+
     function showOnly(scene) {
       const scenes = [
         intro,
@@ -811,52 +942,68 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
         letter,
         noteScene
       ];
+
       scenes.forEach(element => {
         element.hidden =
           element !== scene;
       });
     }
+
     setTimeout(() => {
       showOnly(question);
     }, 3000);
+
     function playErrorSound() {
       try {
         const AudioContext =
           window.AudioContext ||
           window.webkitAudioContext;
+
         if (!AudioContext) return;
+
         const audio =
           new AudioContext();
+
         const oscillator =
           audio.createOscillator();
+
         const gain =
           audio.createGain();
+
         const now =
           audio.currentTime;
+
         oscillator.type = "square";
+
         oscillator.frequency
           .setValueAtTime(
             190,
             now
           );
+
         oscillator.frequency
           .exponentialRampToValueAtTime(
             85,
             now + .18
           );
+
         gain.gain.setValueAtTime(
           .12,
           now
         );
+
         gain.gain
           .exponentialRampToValueAtTime(
             .001,
             now + .2
           );
+
         oscillator.connect(gain);
         gain.connect(audio.destination);
+
         oscillator.start(now);
         oscillator.stop(now + .2);
+
         oscillator.addEventListener(
           "ended",
           () => {
@@ -865,37 +1012,51 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
         );
       } catch (error) {}
     }
+
     noButton.addEventListener(
       "click",
       () => {
         playErrorSound();
+
         noClicks++;
+
         const yesSize =
           Math.min(
             1 + noClicks * .22,
             2.15
           );
+
         yesButton.style.transform =
           `scale(${yesSize})`;
+
         const viewport =
           window.visualViewport;
+
         const viewportLeft =
           viewport?.offsetLeft ?? 0;
+
         const viewportTop =
           viewport?.offsetTop ?? 0;
+
         const viewportWidth =
           viewport?.width ??
           window.innerWidth;
+
         const viewportHeight =
           viewport?.height ??
           window.innerHeight;
+
         const buttonRectangle =
           noButton.getBoundingClientRect();
+
         const margin = 24;
+
         const minimumLeft =
           viewportLeft + margin;
+
         const minimumTop =
           viewportTop + margin;
+
         const maximumLeft =
           Math.max(
             minimumLeft,
@@ -904,6 +1065,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
             buttonRectangle.width -
             margin
           );
+
         const maximumTop =
           Math.max(
             minimumTop,
@@ -912,6 +1074,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
             buttonRectangle.height -
             margin
           );
+
         const randomLeft =
           minimumLeft +
           Math.random() *
@@ -919,6 +1082,7 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
             0,
             maximumLeft - minimumLeft
           );
+
         const randomTop =
           minimumTop +
           Math.random() *
@@ -926,53 +1090,36 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
             0,
             maximumTop - minimumTop
           );
+
         noButton.style.position =
           "fixed";
+
         noButton.style.zIndex =
           "50";
+
         noButton.style.left =
           `${randomLeft}px`;
+
         noButton.style.top =
           `${randomTop}px`;
+
         noStatus.textContent =
           "Bouton Non an deplase.";
       }
     );
+
     function showNotePage() {
       if (creditsObserver) {
         creditsObserver.disconnect();
       }
-      if (noteObserver) {
-        noteObserver.disconnect();
-      }
+
       showOnly(noteScene);
+
       messageBox.focus({
         preventScroll: true
       });
     }
-    function showNoteWhenBinksReachesTop() {
-      if (
-        !("IntersectionObserver" in window)
-      ) {
-        return;
-      }
-      noteObserver =
-        new IntersectionObserver(
-          entries => {
-            const entry = entries[0];
-            if (entry.isIntersecting) {
-              noteObserver.disconnect();
-              showNotePage();
-            }
-          },
-          {
-            rootMargin:
-              "0px 0px -78% 0px",
-            threshold: .01
-          }
-        );
-      noteObserver.observe(signature);
-    }
+
     function hideHoldOnWhenTextApproaches() {
       if (
         !("IntersectionObserver" in window)
@@ -982,45 +1129,57 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
             "is-hidden"
           );
         }, 12000);
+
         return;
       }
+
       creditsObserver =
         new IntersectionObserver(
           entries => {
             const entry = entries[0];
+
             if (entry.isIntersecting) {
               holdOn.classList.add(
                 "is-hidden"
               );
+
               creditsObserver.disconnect();
             }
           },
           {
             rootMargin:
               "-32% 0px -48% 0px",
+
             threshold: .01
           }
         );
+
       creditsObserver.observe(
         creditsLead
       );
     }
+
     yesButton.addEventListener(
       "click",
       () => {
         noButton.removeAttribute(
           "style"
         );
+
         holdOn.classList.remove(
           "is-hidden"
         );
+
         showOnly(letter);
+
         if (reducedMotion) {
           letter.classList.add(
             "reduced"
           );
+
           return;
         }
+
         requestAnimationFrame(() => {
           const duration =
             Math.max(
@@ -1029,20 +1188,23 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
                 credits.scrollHeight / 22
               )
             );
+
           credits.style.setProperty(
             "--duration",
             `${duration}s`
           );
+
           credits.classList.add(
             "running"
           );
-          requestAnimationFrame(() => {
-            hideHoldOnWhenTextApproaches();
-            showNoteWhenBinksReachesTop();
-          });
+
+          requestAnimationFrame(
+            hideHoldOnWhenTextApproaches
+          );
         });
       }
     );
+
     credits.addEventListener(
       "animationend",
       event => {
@@ -1053,38 +1215,51 @@ Kole tout kòd sa a nan dosye index.html sou GitHub:
         }
       }
     );
+
     finishReading.addEventListener(
       "click",
       showNotePage
     );
+
     messageBox.addEventListener(
       "input",
       () => {
         const length =
           messageBox.value.length;
+
         count.textContent =
           `${length}/1200`;
+
         sendButton.disabled =
           !messageBox.value.trim();
       }
     );
+
     noteForm.addEventListener(
       "submit",
       event => {
         event.preventDefault();
+
         const note =
           messageBox.value.trim();
+
         if (!note) return;
+
         const whatsappMessage =
 `Hey Binks 👋
+
 Men nòt mwen apre m fin li mesaj ou a:
+
 ${note}
+
 — Lily`;
+
         const whatsappLink =
           "https://wa.me/17722824807?text=" +
           encodeURIComponent(
             whatsappMessage
           );
+
         window.location.href =
           whatsappLink;
       }

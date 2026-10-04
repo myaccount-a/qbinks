@@ -389,6 +389,59 @@
         transition: transform 0.28s ease;
     }
 
+    .flower-decoration {
+        position: fixed;
+        z-index: 0;
+        width: 150px;
+        height: 170px;
+        opacity: 0.78;
+        pointer-events: none;
+        filter: drop-shadow(0 8px 12px #a83f6812);
+    }
+
+    .flower-decoration.top-left {
+        top: 3vh;
+        left: 2vw;
+        transform: rotate(-8deg);
+    }
+
+    .flower-decoration.bottom-right {
+        right: 2vw;
+        bottom: 2vh;
+        transform: rotate(12deg) scale(1.05);
+    }
+
+    .flower-decoration .stem {
+        fill: none;
+        stroke: #91a188;
+        stroke-linecap: round;
+        stroke-width: 3;
+    }
+
+    .flower-decoration .leaf {
+        fill: #b8c4a9;
+        stroke: #91a188;
+        stroke-width: 1.2;
+    }
+
+    .flower-decoration .petal {
+        fill: #f2a9c0;
+        stroke: #df8ca8;
+        stroke-width: 1;
+    }
+
+    .flower-decoration .petal-light {
+        fill: #ffdce7;
+        stroke: #eeb5c8;
+        stroke-width: 1;
+    }
+
+    .flower-decoration .center {
+        fill: #f4d38a;
+        stroke: #dfb95e;
+        stroke-width: 1;
+    }
+
     .footer {
         margin: 16px 0;
         color: #a88c98;
@@ -424,6 +477,22 @@
     }
 
     @media (max-width: 520px) {
+        .flower-decoration {
+            width: 92px;
+            height: 108px;
+            opacity: 0.5;
+        }
+
+        .flower-decoration.top-left {
+            top: 1vh;
+            left: -8px;
+        }
+
+        .flower-decoration.bottom-right {
+            right: -8px;
+            bottom: 1vh;
+        }
+
         body {
             padding: 14px;
         }
@@ -448,641 +517,710 @@
     }
 </style>
 </head>
+
 <body>
-    <div class="grain" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
 
-    <main class="site-shell">
-        <div class="brand-line">
-            <span>✦ a small, pink mystery</span>
-            <span>made for Coralie</span>
-        </div>
+<svg class="flower-decoration top-left" viewBox="0 0 150 170" aria-hidden="true">
+    <path class="stem" d="M45 150 C55 112 58 85 52 60 M58 145 C76 112 93 92 106 70 M42 148 C30 119 25 101 29 82" />
+    <path class="leaf" d="M48 122 C25 119 19 105 19 94 C38 96 49 106 48 122Z" />
+    <path class="leaf" d="M72 115 C73 94 88 83 103 84 C98 102 88 113 72 115Z" />
+    <path class="leaf" d="M33 112 C16 106 12 92 16 81 C30 88 36 99 33 112Z" />
 
-        <article class="experience-card">
-            <section class="screen active" id="intro-screen">
-                <p class="eyebrow">A little surprise from Instagram</p>
+    <g transform="translate(52 49)">
+        <ellipse class="petal" cx="0" cy="-13" rx="8" ry="14" />
+        <ellipse class="petal-light" cx="0" cy="-13" rx="8" ry="14" transform="rotate(72)" />
+        <ellipse class="petal" cx="0" cy="-13" rx="8" ry="14" transform="rotate(144)" />
+        <ellipse class="petal-light" cx="0" cy="-13" rx="8" ry="14" transform="rotate(216)" />
+        <ellipse class="petal" cx="0" cy="-13" rx="8" ry="14" transform="rotate(288)" />
+        <circle class="center" r="6" />
+    </g>
 
-                <h1 class="serif-heading">
-                    A Little Mystery
-                    <span class="pink-emphasis">Made for You</span>
-                </h1>
+    <g transform="translate(108 61) scale(.75)">
+        <ellipse class="petal-light" cx="0" cy="-13" rx="8" ry="14" />
+        <ellipse class="petal" cx="0" cy="-13" rx="8" ry="14" transform="rotate(72)" />
+        <ellipse class="petal-light" cx="0" cy="-13" rx="8" ry="14" transform="rotate(144)" />
+        <ellipse class="petal" cx="0" cy="-13" rx="8" ry="14" transform="rotate(216)" />
+        <ellipse class="petal-light" cx="0" cy="-13" rx="8" ry="14" transform="rotate(288)" />
+        <circle class="center" r="6" />
+    </g>
 
-                <p class="description">
-                    Even with a little distance between us, I thought it
-                    would be fun to make you something just for you. Follow
-                    the clues—and if you like the vibe, we can keep the
-                    conversation going.
-                </p>
+    <g transform="translate(28 72) scale(.58)">
+        <ellipse class="petal" cx="0" cy="-13" rx="8" ry="14" />
+        <ellipse class="petal-light" cx="0" cy="-13" rx="8" ry="14" transform="rotate(72)" />
+        <ellipse class="petal" cx="0" cy="-13" rx="8" ry="14" transform="rotate(144)" />
+        <ellipse class="petal-light" cx="0" cy="-13" rx="8" ry="14" transform="rotate(216)" />
+        <ellipse class="petal" cx="0" cy="-13" rx="8" ry="14" transform="rotate(288)" />
+        <circle class="center" r="6" />
+    </g>
+</svg>
 
-                <button class="button" onclick="showScreen('quiz-screen')">
-                    Start the mystery →
+<svg class="flower-decoration bottom-right" viewBox="0 0 150 170" aria-hidden="true">
+    <path class="stem" d="M105 153 C92 122 88 94 94 58 M88 148 C69 118 53 96 40 77 M111 151 C128 126 134 107 129 88" />
+    <path class="leaf" d="M94 120 C113 113 121 100 119 88 C102 93 93 104 94 120Z" />
+    <path class="leaf" d="M70 117 C66 96 52 85 37 87 C42 104 54 115 70 117Z" />
+    <path class="leaf" d="M126 116 C142 107 145 94 140 83 C127 91 122 102 126 116Z" />
+
+    <g transform="translate(94 48)">
+        <ellipse class="petal-light" cx="0" cy="-13" rx="8" ry="14" />
+        <ellipse class="petal" cx="0" cy="-13" rx="8" ry="14" transform="rotate(72)" />
+        <ellipse class="petal-light" cx="0" cy="-13" rx="8" ry="14" transform="rotate(144)" />
+        <ellipse class="petal" cx="0" cy="-13" rx="8" ry="14" transform="rotate(216)" />
+        <ellipse class="petal-light" cx="0" cy="-13" rx="8" ry="14" transform="rotate(288)" />
+        <circle class="center" r="6" />
+    </g>
+
+    <g transform="translate(40 65) scale(.73)">
+        <ellipse class="petal" cx="0" cy="-13" rx="8" ry="14" />
+        <ellipse class="petal-light" cx="0" cy="-13" rx="8" ry="14" transform="rotate(72)" />
+        <ellipse class="petal" cx="0" cy="-13" rx="8" ry="14" transform="rotate(144)" />
+        <ellipse class="petal-light" cx="0" cy="-13" rx="8" ry="14" transform="rotate(216)" />
+        <ellipse class="petal" cx="0" cy="-13" rx="8" ry="14" transform="rotate(288)" />
+        <circle class="center" r="6" />
+    </g>
+
+    <g transform="translate(129 76) scale(.56)">
+        <ellipse class="petal-light" cx="0" cy="-13" rx="8" ry="14" />
+        <ellipse class="petal" cx="0" cy="-13" rx="8" ry="14" transform="rotate(72)" />
+        <ellipse class="petal-light" cx="0" cy="-13" rx="8" ry="14" transform="rotate(144)" />
+        <ellipse class="petal" cx="0" cy="-13" rx="8" ry="14" transform="rotate(216)" />
+        <ellipse class="petal-light" cx="0" cy="-13" rx="8" ry="14" transform="rotate(288)" />
+        <circle class="center" r="6" />
+    </g>
+</svg>
+
+<main class="site-shell">
+    <div class="brand-line">
+        <span>✦ a small, pink mystery</span>
+        <span>made for Coralie</span>
+    </div>
+
+    <article class="experience-card">
+        <section class="screen active" id="intro-screen">
+            <p class="eyebrow">A little surprise from Instagram</p>
+
+            <h1 class="serif-heading">
+                A Little Mystery
+                <span class="pink-emphasis">Made for You</span>
+            </h1>
+
+            <p class="description">
+                Even with a little distance between us, I thought it
+                would be fun to make you something just for you. Follow
+                the clues—and if you like the vibe, we can keep the
+                conversation going.
+            </p>
+
+            <button class="button" onclick="showScreen('quiz-screen')">
+                Start the mystery →
+            </button>
+
+            <p class="small-note">
+                A few playful questions. One tiny surprise. Zero pressure.
+            </p>
+        </section>
+
+        <section class="screen" id="quiz-screen">
+            <div class="progress-track" aria-label="Quiz progress">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+
+            <div class="question-number" id="question-number">
+                Question 1 of 4
+            </div>
+
+            <p class="eyebrow">Let's see your vibe, Coralie</p>
+
+            <h2 class="serif-heading" id="question-text"></h2>
+
+            <div class="answer-list" id="answer-list"></div>
+
+            <p
+                class="reaction-message"
+                id="answer-reaction"
+                aria-live="polite"
+            ></p>
+
+            <button
+                class="button"
+                id="next-question-button"
+                disabled
+                onclick="goToNextQuestion()"
+            >
+                Next little clue →
+            </button>
+        </section>
+
+        <section class="screen" id="game-screen">
+            <p class="eyebrow">The tiny mystery game</p>
+
+            <h2 class="serif-heading">Pick a little box.</h2>
+
+            <p class="description">
+                One has your secret bonus message. The others have
+                equally important compliments. Pick your favorite.
+            </p>
+
+            <div class="box-grid">
+                <button
+                    class="mystery-box"
+                    aria-label="Open mystery box number one"
+                    onclick="openMysteryBox(this, 0)"
+                >
+                    🎀
+                    <small>NO. 01</small>
                 </button>
-
-                <p class="small-note">
-                    A few playful questions. One tiny surprise. Zero pressure.
-                </p>
-            </section>
-
-            <section class="screen" id="quiz-screen">
-                <div class="progress-track" aria-label="Quiz progress">
-                    <div class="progress-fill" id="progress-fill"></div>
-                </div>
-
-                <div class="question-number" id="question-number">
-                    Question 1 of 4
-                </div>
-
-                <p class="eyebrow">Let's see your vibe, Coralie</p>
-
-                <h2 class="serif-heading" id="question-text"></h2>
-
-                <div class="answer-list" id="answer-list"></div>
-
-                <p
-                    class="reaction-message"
-                    id="answer-reaction"
-                    aria-live="polite"
-                ></p>
 
                 <button
-                    class="button"
-                    id="next-question-button"
-                    disabled
-                    onclick="goToNextQuestion()"
+                    class="mystery-box"
+                    aria-label="Open mystery box number two"
+                    onclick="openMysteryBox(this, 1)"
                 >
-                    Next little clue →
+                    💌
+                    <small>NO. 02</small>
                 </button>
-            </section>
-
-            <section class="screen" id="game-screen">
-                <p class="eyebrow">The tiny mystery game</p>
-
-                <h2 class="serif-heading">Pick a little box.</h2>
-
-                <p class="description">
-                    One has your secret bonus message. The others have
-                    equally important compliments. Pick your favorite.
-                </p>
-
-                <div class="box-grid">
-                    <button
-                        class="mystery-box"
-                        aria-label="Open mystery box number one"
-                        onclick="openMysteryBox(this, 0)"
-                    >
-                        🎀
-                        <small>NO. 01</small>
-                    </button>
-
-                    <button
-                        class="mystery-box"
-                        aria-label="Open mystery box number two"
-                        onclick="openMysteryBox(this, 1)"
-                    >
-                        💌
-                        <small>NO. 02</small>
-                    </button>
-
-                    <button
-                        class="mystery-box"
-                        aria-label="Open mystery box number three"
-                        onclick="openMysteryBox(this, 2)"
-                    >
-                        ✨
-                        <small>NO. 03</small>
-                    </button>
-                </div>
-
-                <p
-                    class="reaction-message"
-                    id="box-reaction"
-                    aria-live="polite"
-                ></p>
 
                 <button
-                    class="button"
-                    id="show-result-button"
-                    style="display: none;"
-                    onclick="showPersonalizedResult()"
+                    class="mystery-box"
+                    aria-label="Open mystery box number three"
+                    onclick="openMysteryBox(this, 2)"
                 >
-                    Reveal my result →
+                    ✨
+                    <small>NO. 03</small>
                 </button>
-            </section>
+            </div>
 
-            <section class="screen" id="result-screen">
-                <p class="eyebrow">Your highly unscientific result</p>
+            <p
+                class="reaction-message"
+                id="box-reaction"
+                aria-live="polite"
+            ></p>
 
-                <h2 class="serif-heading">Coralie, you got…</h2>
+            <button
+                class="button"
+                id="show-result-button"
+                style="display: none;"
+                onclick="showPersonalizedResult()"
+            >
+                Reveal my result →
+            </button>
+        </section>
 
-                <div class="result-label">
-                    ✦ mysteriously memorable
-                </div>
+        <section class="screen" id="result-screen">
+            <p class="eyebrow">Your highly unscientific result</p>
 
-                <div class="score">
-                    <span id="score-number">0</span>
-                    <span style="font-size: 30px;">/100</span>
-                </div>
+            <h2 class="serif-heading">Coralie, you got…</h2>
 
-                <div class="result-panel" id="personalized-result"></div>
+            <div class="result-label">
+                ✦ mysteriously memorable
+            </div>
 
-                <button class="button" onclick="showScreen('note-screen')">
-                    One last thing →
+            <div class="score">
+                <span id="score-number">0</span>
+                <span style="font-size: 30px;">/100</span>
+            </div>
+
+            <div class="result-panel" id="personalized-result"></div>
+
+            <button class="button" onclick="showScreen('note-screen')">
+                One last thing →
+            </button>
+        </section>
+
+        <section class="screen" id="note-screen">
+            <p class="eyebrow">A note from Binks</p>
+
+            <h2 class="serif-heading">A little honesty.</h2>
+
+            <p class="personal-note">
+                “I could have sent you a regular DM, but you didn’t feel
+                like a regular person. So I made you this instead.”
+            </p>
+
+            <p class="description">
+                I’m glad we crossed paths on Instagram. If you had fun,
+                we can keep the conversation going—your call, your pace.
+            </p>
+
+            <button class="button" onclick="showScreen('final-screen')">
+                Open the final note →
+            </button>
+        </section>
+
+        <section class="screen" id="final-screen">
+            <p class="eyebrow">The mystery ends here</p>
+
+            <h2 class="serif-heading">Your next move, Coralie.</h2>
+
+            <p class="description">
+                I’m not asking for your number. I’m simply giving you
+                a good reason to use it.
+            </p>
+
+            <div class="final-panel">
+                <a
+                    class="button"
+                    id="whatsapp-link"
+                    href="#"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Continue this mystery on WhatsApp ↗
+                </a>
+
+                <button
+                    class="button secondary stay-mysterious-button"
+                    id="stay-button"
+                    onclick="stayMysterious()"
+                >
+                    Stay mysterious for now
                 </button>
-            </section>
+            </div>
 
-            <section class="screen" id="note-screen">
-                <p class="eyebrow">A note from Binks</p>
+            <p
+                class="small-note"
+                id="stay-message"
+                aria-live="polite"
+            ></p>
 
-                <h2 class="serif-heading">A little honesty.</h2>
+            <p class="small-note">
+                The WhatsApp message is only a draft. It will be sent
+                only if you tap Send.
+            </p>
+        </section>
+    </article>
 
-                <p class="personal-note">
-                    “I could have sent you a regular DM, but you didn’t feel
-                    like a regular person. So I made you this instead.”
-                </p>
+    <div class="footer">
+        crafted with a little curiosity
+        <span class="heart">♥</span>
+        by Binks
+    </div>
+</main>
 
-                <p class="description">
-                    I’m glad we crossed paths on Instagram. If you had fun,
-                    we can keep the conversation going—your call, your pace.
-                </p>
-
-                <button class="button" onclick="showScreen('final-screen')">
-                    Open the final note →
-                </button>
-            </section>
-
-            <section class="screen" id="final-screen">
-                <p class="eyebrow">The mystery ends here</p>
-
-                <h2 class="serif-heading">Your next move, Coralie.</h2>
-
-                <p class="description">
-                    I’m not asking for your number again. I’m simply giving you
-                    a good reason to use it.
-                </p>
-
-                <div class="final-panel">
-                    <a
-                        class="button"
-                        id="whatsapp-link"
-                        href="#"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        Continue this mystery on WhatsApp ↗
-                    </a>
-
-                    <button
-                        class="button secondary stay-mysterious-button"
-                        id="stay-button"
-                        onclick="stayMysterious()"
-                    >
-                        Stay mysterious for now
-                    </button>
-                </div>
-
-                <p
-                    class="small-note"
-                    id="stay-message"
-                    aria-live="polite"
-                ></p>
-
-                <p class="small-note">
-                    The WhatsApp message is only a draft. It will be sent
-                    only if you tap Send.
-                </p>
-            </section>
-        </article>
-
-        <div class="footer">
-            crafted with a little curiosity
-            <span class="heart">♥</span>
-            by Binks
-        </div>
-    </main>
-
-    <script>
-        const questions = [
-            {
-                text: "What’s your perfect late-night vibe?",
-                answers: [
-                    "Deep talks and a sky full of stars",
-                    "A playlist, good snacks, no plans",
-                    "A spontaneous little adventure"
-                ],
-                reactions: [
-                    "Starry-night conversations? Excellent taste.",
-                    "The cozy chaos option. Respect.",
-                    "A little unpredictable—in a good way."
-                ]
-            },
-            {
-                text: "What makes a conversation across the miles feel effortless?",
-                answers: [
-                    "Voice notes that turn into stories",
-                    "Laughing about the most random things",
-                    "A late-night conversation that loses track of time"
-                ],
-                reactions: [
-                    "One little voice note can turn into a whole story.",
-                    "The best conversations have a few unexpected laughs.",
-                    "Losing track of time is usually a pretty good sign."
-                ]
-            },
-            {
-                text: "What makes someone unforgettable?",
-                answers: [
-                    "Their sense of humor",
-                    "How easy they make you feel",
-                    "A little mystery"
-                ],
-                reactions: [
-                    "A good laugh is hard to forget.",
-                    "Comfort is an underrated superpower.",
-                    "A little mystery keeps the story going."
-                ]
-            },
-            {
-                text: "Choose the energy that feels most like you.",
-                answers: [
-                    "Soft-spoken but observant",
-                    "Confident with a playful side",
-                    "Sweet, with a hint of trouble"
-                ],
-                reactions: [
-                    "Quietly noticing everything. Interesting.",
-                    "That combination has main-character energy.",
-                    "Sweet with a plot twist. Noted."
-                ]
-            }
-        ];
-
-        const mysteryBoxMessages = [
-            "Your curiosity is officially charming.",
-            "Bonus clue: you have excellent mystery-box instincts.",
-            "Secret unlocked: you seem like someone worth getting to know."
-        ];
-
-        let currentQuestionIndex = 0;
-        let selectedAnswers = [];
-        let selectedBoxIndex = null;
-        let hasOpenedBox = false;
-        let stayButtonClickCount = 0;
-
-        function showScreen(screenId) {
-            const allScreens = document.querySelectorAll(".screen");
-
-            allScreens.forEach(function (screen) {
-                screen.classList.remove("active");
-            });
-
-            const requestedScreen =
-                document.getElementById(screenId);
-
-            requestedScreen.classList.add("active");
-
-            if (screenId === "quiz-screen") {
-                displayCurrentQuestion();
-            }
-
-            if (screenId === "final-screen") {
-                prepareWhatsAppMessage();
-            }
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
+<script>
+    const questions = [
+        {
+            text: "What’s your perfect late-night vibe?",
+            answers: [
+                "Deep talks and a sky full of stars",
+                "A playlist, good snacks, no plans",
+                "A spontaneous little adventure"
+            ],
+            reactions: [
+                "Starry-night conversations? Excellent taste.",
+                "The cozy chaos option. Respect.",
+                "A little unpredictable—in a good way."
+            ]
+        },
+        {
+            text: "What makes a conversation across the miles feel effortless?",
+            answers: [
+                "Voice notes that turn into stories",
+                "Laughing about the most random things",
+                "A late-night conversation that loses track of time"
+            ],
+            reactions: [
+                "One little voice note can turn into a whole story.",
+                "The best conversations have a few unexpected laughs.",
+                "Losing track of time is usually a pretty good sign."
+            ]
+        },
+        {
+            text: "What makes someone unforgettable?",
+            answers: [
+                "Their sense of humor",
+                "How easy they make you feel",
+                "A little mystery"
+            ],
+            reactions: [
+                "A good laugh is hard to forget.",
+                "Comfort is an underrated superpower.",
+                "A little mystery keeps the story going."
+            ]
+        },
+        {
+            text: "Choose the energy that feels most like you.",
+            answers: [
+                "Soft-spoken but observant",
+                "Confident with a playful side",
+                "Sweet, with a hint of trouble"
+            ],
+            reactions: [
+                "Quietly noticing everything. Interesting.",
+                "That combination has main-character energy.",
+                "Sweet with a plot twist. Noted."
+            ]
         }
+    ];
 
-        function displayCurrentQuestion() {
-            const question = questions[currentQuestionIndex];
-            const questionNumber = currentQuestionIndex + 1;
-            const totalQuestions = questions.length;
+    const mysteryBoxMessages = [
+        "Your curiosity is officially charming.",
+        "Bonus clue: you have excellent mystery-box instincts.",
+        "Secret unlocked: you seem like someone worth getting to know."
+    ];
 
-            document.getElementById("question-number").textContent =
-                "Question " + questionNumber + " of " + totalQuestions;
+    let currentQuestionIndex = 0;
+    let selectedAnswers = [];
+    let selectedBoxIndex = null;
+    let hasOpenedBox = false;
+    let stayButtonClickCount = 0;
 
-            const progressPercent =
-                (currentQuestionIndex / totalQuestions) * 100;
+    function showScreen(screenId) {
+        const allScreens = document.querySelectorAll(".screen");
 
-            document.getElementById("progress-fill").style.width =
-                progressPercent + "%";
+        allScreens.forEach(function (screen) {
+            screen.classList.remove("active");
+        });
 
-            document.getElementById("question-text").textContent =
-                question.text;
+        const requestedScreen =
+            document.getElementById(screenId);
 
-            document.getElementById("answer-reaction").textContent = "";
+        requestedScreen.classList.add("active");
 
-            document.getElementById(
-                "next-question-button"
-            ).disabled = true;
-
-            if (currentQuestionIndex === totalQuestions - 1) {
-                document.getElementById(
-                    "next-question-button"
-                ).textContent = "Find the mystery game →";
-            } else {
-                document.getElementById(
-                    "next-question-button"
-                ).textContent = "Next little clue →";
-            }
-
-            const answerList =
-                document.getElementById("answer-list");
-
-            answerList.innerHTML = "";
-
-            question.answers.forEach(function (answerText, answerIndex) {
-                const answerButton =
-                    document.createElement("button");
-
-                answerButton.className = "answer-choice";
-                answerButton.type = "button";
-                answerButton.textContent = answerText;
-
-                answerButton.addEventListener("click", function () {
-                    chooseAnswer(answerIndex, answerButton);
-                });
-
-                answerList.appendChild(answerButton);
-            });
-        }
-
-        function chooseAnswer(answerIndex, clickedButton) {
-            const allAnswerButtons =
-                document.querySelectorAll(".answer-choice");
-
-            allAnswerButtons.forEach(function (button) {
-                button.classList.remove("selected");
-            });
-
-            clickedButton.classList.add("selected");
-
-            selectedAnswers[currentQuestionIndex] = answerIndex;
-
-            const reaction =
-                questions[currentQuestionIndex].reactions[answerIndex];
-
-            document.getElementById("answer-reaction").textContent =
-                reaction;
-
-            document.getElementById(
-                "next-question-button"
-            ).disabled = false;
-        }
-
-        function goToNextQuestion() {
-            const isLastQuestion =
-                currentQuestionIndex === questions.length - 1;
-
-            if (isLastQuestion) {
-                showScreen("game-screen");
-                return;
-            }
-
-            currentQuestionIndex += 1;
+        if (screenId === "quiz-screen") {
             displayCurrentQuestion();
         }
 
-        function openMysteryBox(clickedBox, boxIndex) {
-            if (hasOpenedBox) {
-                return;
-            }
+        if (screenId === "final-screen") {
+            prepareWhatsAppMessage();
+        }
 
-            hasOpenedBox = true;
-            selectedBoxIndex = boxIndex;
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
 
-            clickedBox.classList.add("opened");
-            clickedBox.innerHTML = "💖<small>OPENED</small>";
+    function displayCurrentQuestion() {
+        const question = questions[currentQuestionIndex];
+        const questionNumber = currentQuestionIndex + 1;
+        const totalQuestions = questions.length;
 
-            document.getElementById("box-reaction").textContent =
-                mysteryBoxMessages[boxIndex];
+        document.getElementById("question-number").textContent =
+            "Question " + questionNumber + " of " + totalQuestions;
 
+        const progressPercent =
+            (currentQuestionIndex / totalQuestions) * 100;
+
+        document.getElementById("progress-fill").style.width =
+            progressPercent + "%";
+
+        document.getElementById("question-text").textContent =
+            question.text;
+
+        document.getElementById("answer-reaction").textContent = "";
+
+        document.getElementById(
+            "next-question-button"
+        ).disabled = true;
+
+        if (currentQuestionIndex === totalQuestions - 1) {
             document.getElementById(
-                "show-result-button"
-            ).style.display = "inline-block";
+                "next-question-button"
+            ).textContent = "Find the mystery game →";
+        } else {
+            document.getElementById(
+                "next-question-button"
+            ).textContent = "Next little clue →";
+        }
 
-            const allMysteryBoxes =
-                document.querySelectorAll(".mystery-box");
+        const answerList =
+            document.getElementById("answer-list");
 
-            allMysteryBoxes.forEach(function (box) {
-                box.disabled = true;
+        answerList.innerHTML = "";
+
+        question.answers.forEach(function (answerText, answerIndex) {
+            const answerButton =
+                document.createElement("button");
+
+            answerButton.className = "answer-choice";
+            answerButton.type = "button";
+            answerButton.textContent = answerText;
+
+            answerButton.addEventListener("click", function () {
+                chooseAnswer(answerIndex, answerButton);
             });
 
-            releaseConfetti();
+            answerList.appendChild(answerButton);
+        });
+    }
+
+    function chooseAnswer(answerIndex, clickedButton) {
+        const allAnswerButtons =
+            document.querySelectorAll(".answer-choice");
+
+        allAnswerButtons.forEach(function (button) {
+            button.classList.remove("selected");
+        });
+
+        clickedButton.classList.add("selected");
+
+        selectedAnswers[currentQuestionIndex] = answerIndex;
+
+        const reaction =
+            questions[currentQuestionIndex].reactions[answerIndex];
+
+        document.getElementById("answer-reaction").textContent =
+            reaction;
+
+        document.getElementById(
+            "next-question-button"
+        ).disabled = false;
+    }
+
+    function goToNextQuestion() {
+        const isLastQuestion =
+            currentQuestionIndex === questions.length - 1;
+
+        if (isLastQuestion) {
+            showScreen("game-screen");
+            return;
         }
 
-        function showPersonalizedResult() {
-            let finalScore = 68;
+        currentQuestionIndex += 1;
+        displayCurrentQuestion();
+    }
 
-            selectedAnswers.forEach(function (answerIndex) {
-                if (answerIndex === 1) {
-                    finalScore += 5;
-                } else if (answerIndex === 2) {
-                    finalScore += 4;
-                } else {
-                    finalScore += 3;
-                }
-            });
-
-            finalScore += selectedBoxIndex * 2;
-            finalScore = Math.min(finalScore, 99);
-
-            document.getElementById("score-number").textContent =
-                finalScore;
-
-            const personalityPhrases = [
-                "a curious mind",
-                "a quietly confident vibe",
-                "a playful streak",
-                "a very promising sense of mystery"
-            ];
-
-            const chosenPhrases = selectedAnswers.map(
-                function (answerIndex, questionIndex) {
-                    const phraseIndex =
-                        (answerIndex + questionIndex) %
-                        personalityPhrases.length;
-
-                    return personalityPhrases[phraseIndex];
-                }
-            );
-
-            const resultSentence =
-                "Result: " +
-                chosenPhrases[0] +
-                ", " +
-                chosenPhrases[1] +
-                ", and " +
-                chosenPhrases[2] +
-                ". Basically… exactly the kind of person Binks wanted " +
-                "to know better. (For fun only—this is definitely not " +
-                "a real personality test.)";
-
-            document.getElementById(
-                "personalized-result"
-            ).textContent = resultSentence;
-
-            showScreen("result-screen");
-            releaseConfetti();
+    function openMysteryBox(clickedBox, boxIndex) {
+        if (hasOpenedBox) {
+            return;
         }
 
-        function prepareWhatsAppMessage() {
-            const score =
-                document.getElementById("score-number").textContent;
+        hasOpenedBox = true;
+        selectedBoxIndex = boxIndex;
 
-            const message =
-                "Hey Binks, I finished your little mystery 😌 " +
-                "My final score was " +
-                score +
-                "/100. Now impress me without a website.";
+        clickedBox.classList.add("opened");
+        clickedBox.innerHTML = "💖<small>OPENED</small>";
 
-            const phoneNumber = "17722824807";
-            const encodedMessage = encodeURIComponent(message);
+        document.getElementById("box-reaction").textContent =
+            mysteryBoxMessages[boxIndex];
 
-            const whatsappUrl =
-                "https://wa.me/" +
-                phoneNumber +
-                "?text=" +
-                encodedMessage;
+        document.getElementById(
+            "show-result-button"
+        ).style.display = "inline-block";
 
-            document.getElementById("whatsapp-link").href =
-                whatsappUrl;
-        }
+        const allMysteryBoxes =
+            document.querySelectorAll(".mystery-box");
 
-        function stayMysterious() {
-            stayButtonClickCount += 1;
+        allMysteryBoxes.forEach(function (box) {
+            box.disabled = true;
+        });
 
-            document.getElementById("stay-message").textContent =
-                "Fair enough, Coralie. The mystery will be right here " +
-                "if you ever feel like continuing. ✨";
+        releaseConfetti();
+    }
 
-            const whatsappButton =
-                document.getElementById("whatsapp-link");
+    function showPersonalizedResult() {
+        let finalScore = 68;
 
-            const whatsappScale = Math.min(
-                1.22,
-                1 + stayButtonClickCount * 0.07
-            );
-
-            whatsappButton.style.transform =
-                "scale(" + whatsappScale + ")";
-
-            const stayButton =
-                document.getElementById("stay-button");
-
-            const shrinkScale = Math.max(
-                0.72,
-                1 - stayButtonClickCount * 0.07
-            );
-
-            const newFontSize = Math.max(
-                12,
-                14 - stayButtonClickCount * 0.5
-            );
-
-            const newPaddingY = Math.max(
-                9,
-                15 - stayButtonClickCount * 0.8
-            );
-
-            const newPaddingX = Math.max(
-                12,
-                22 - stayButtonClickCount * 1.3
-            );
-
-            stayButton.style.fontSize = newFontSize + "px";
-
-            stayButton.style.padding =
-                newPaddingY + "px " + newPaddingX + "px";
-
-            stayButton.style.transform =
-                "scale(" + shrinkScale + ")";
-
-            stayButton.classList.add("is-moving");
-
-            const panel =
-                document.querySelector(".final-panel");
-
-            const panelRect =
-                panel.getBoundingClientRect();
-
-            const whatsappRect =
-                whatsappButton.getBoundingClientRect();
-
-            const safeMargin = 12;
-            const buttonWidth = stayButton.offsetWidth;
-            const buttonHeight = stayButton.offsetHeight;
-            const lowestLeft = safeMargin;
-
-            const highestLeft = Math.max(
-                lowestLeft,
-                panel.clientWidth - buttonWidth - safeMargin
-            );
-
-            const topAfterWhatsApp =
-                whatsappRect.bottom - panelRect.top + 18;
-
-            const highestTop = Math.max(
-                topAfterWhatsApp,
-                panel.clientHeight - buttonHeight - safeMargin
-            );
-
-            const randomLeft =
-                lowestLeft +
-                Math.random() * (highestLeft - lowestLeft);
-
-            const randomTop =
-                topAfterWhatsApp +
-                Math.random() * (highestTop - topAfterWhatsApp);
-
-            stayButton.style.left = randomLeft + "px";
-            stayButton.style.top = randomTop + "px";
-        }
-
-        function releaseConfetti() {
-            const confettiColors = [
-                "#ec8eae",
-                "#f5c875",
-                "#b97ba0",
-                "#f4b9cb",
-                "#ffffff"
-            ];
-
-            for (
-                let pieceNumber = 0;
-                pieceNumber < 38;
-                pieceNumber += 1
-            ) {
-                const confettiPiece =
-                    document.createElement("i");
-
-                confettiPiece.className = "confetti-piece";
-
-                confettiPiece.style.left =
-                    Math.random() * 100 + "vw";
-
-                const colorIndex =
-                    pieceNumber % confettiColors.length;
-
-                confettiPiece.style.backgroundColor =
-                    confettiColors[colorIndex];
-
-                confettiPiece.style.animationDelay =
-                    Math.random() * 0.6 + "s";
-
-                const startingAngle =
-                    Math.random() * 180;
-
-                confettiPiece.style.transform =
-                    "rotate(" + startingAngle + "deg)";
-
-                document.body.appendChild(confettiPiece);
-
-                window.setTimeout(function () {
-                    confettiPiece.remove();
-                }, 3500);
+        selectedAnswers.forEach(function (answerIndex) {
+            if (answerIndex === 1) {
+                finalScore += 5;
+            } else if (answerIndex === 2) {
+                finalScore += 4;
+            } else {
+                finalScore += 3;
             }
+        });
+
+        finalScore += selectedBoxIndex * 2;
+        finalScore = Math.min(finalScore, 99);
+
+        document.getElementById("score-number").textContent =
+            finalScore;
+
+        const personalityPhrases = [
+            "a curious mind",
+            "a quietly confident vibe",
+            "a playful streak",
+            "a very promising sense of mystery"
+        ];
+
+        const chosenPhrases = selectedAnswers.map(
+            function (answerIndex, questionIndex) {
+                const phraseIndex =
+                    (answerIndex + questionIndex) %
+                    personalityPhrases.length;
+
+                return personalityPhrases[phraseIndex];
+            }
+        );
+
+        const resultSentence =
+            "Result: " +
+            chosenPhrases[0] +
+            ", " +
+            chosenPhrases[1] +
+            ", and " +
+            chosenPhrases[2] +
+            ". Basically… exactly the kind of person Binks wanted " +
+            "to know better. (For fun only—this is definitely not " +
+            "a real personality test.)";
+
+        document.getElementById(
+            "personalized-result"
+        ).textContent = resultSentence;
+
+        showScreen("result-screen");
+        releaseConfetti();
+    }
+
+    function prepareWhatsAppMessage() {
+        const score =
+            document.getElementById("score-number").textContent;
+
+        const message =
+            "Hey Binks, I finished your little mystery 😌 " +
+            "My final score was " +
+            score +
+            "/100. Now impress me without a website.";
+
+        const phoneNumber = "17722824807";
+        const encodedMessage = encodeURIComponent(message);
+
+        const whatsappUrl =
+            "https://wa.me/" +
+            phoneNumber +
+            "?text=" +
+            encodedMessage;
+
+        document.getElementById("whatsapp-link").href =
+            whatsappUrl;
+    }
+
+    function stayMysterious() {
+        stayButtonClickCount += 1;
+
+        document.getElementById("stay-message").textContent =
+            "Fair enough, Coralie. The mystery will be right here " +
+            "if you ever feel like continuing. ✨";
+
+        const whatsappButton =
+            document.getElementById("whatsapp-link");
+
+        const whatsappScale = Math.min(
+            1.22,
+            1 + stayButtonClickCount * 0.07
+        );
+
+        whatsappButton.style.transform =
+            "scale(" + whatsappScale + ")";
+
+        const stayButton =
+            document.getElementById("stay-button");
+
+        const shrinkScale = Math.max(
+            0.72,
+            1 - stayButtonClickCount * 0.07
+        );
+
+        const newFontSize = Math.max(
+            12,
+            14 - stayButtonClickCount * 0.5
+        );
+
+        const newPaddingY = Math.max(
+            9,
+            15 - stayButtonClickCount * 0.8
+        );
+
+        const newPaddingX = Math.max(
+            12,
+            22 - stayButtonClickCount * 1.3
+        );
+
+        stayButton.style.fontSize = newFontSize + "px";
+
+        stayButton.style.padding =
+            newPaddingY + "px " + newPaddingX + "px";
+
+        stayButton.style.transform =
+            "scale(" + shrinkScale + ")";
+
+        stayButton.classList.add("is-moving");
+
+        const panel =
+            document.querySelector(".final-panel");
+
+        const panelRect =
+            panel.getBoundingClientRect();
+
+        const whatsappRect =
+            whatsappButton.getBoundingClientRect();
+
+        const safeMargin = 12;
+        const buttonWidth = stayButton.offsetWidth;
+        const buttonHeight = stayButton.offsetHeight;
+        const lowestLeft = safeMargin;
+
+        const highestLeft = Math.max(
+            lowestLeft,
+            panel.clientWidth - buttonWidth - safeMargin
+        );
+
+        const topAfterWhatsApp =
+            whatsappRect.bottom - panelRect.top + 18;
+
+        const highestTop = Math.max(
+            topAfterWhatsApp,
+            panel.clientHeight - buttonHeight - safeMargin
+        );
+
+        const randomLeft =
+            lowestLeft +
+            Math.random() * (highestLeft - lowestLeft);
+
+        const randomTop =
+            topAfterWhatsApp +
+            Math.random() * (highestTop - topAfterWhatsApp);
+
+        stayButton.style.left = randomLeft + "px";
+        stayButton.style.top = randomTop + "px";
+    }
+
+    function releaseConfetti() {
+        const confettiColors = [
+            "#ec8eae",
+            "#f5c875",
+            "#b97ba0",
+            "#f4b9cb",
+            "#ffffff"
+        ];
+
+        for (
+            let pieceNumber = 0;
+            pieceNumber < 38;
+            pieceNumber += 1
+        ) {
+            const confettiPiece =
+                document.createElement("i");
+
+            confettiPiece.className = "confetti-piece";
+
+            confettiPiece.style.left =
+                Math.random() * 100 + "vw";
+
+            const colorIndex =
+                pieceNumber % confettiColors.length;
+
+            confettiPiece.style.backgroundColor =
+                confettiColors[colorIndex];
+
+            confettiPiece.style.animationDelay =
+                Math.random() * 0.6 + "s";
+
+            const startingAngle =
+                Math.random() * 180;
+
+            confettiPiece.style.transform =
+                "rotate(" + startingAngle + "deg)";
+
+            document.body.appendChild(confettiPiece);
+
+            window.setTimeout(function () {
+                confettiPiece.remove();
+            }, 3500);
         }
-    </script>
+    }
+</script>
 </body>
 </html>
